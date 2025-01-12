@@ -2,10 +2,11 @@
 
 #include <iostream>
 #include "SFML/Graphics.hpp"
+#include "Base.h"
 int main()
 {
-	
-	std::cout << "TEST" << std::endl;
+	Base base = Base();
+	base.run();
 
 	return 0;
 }
