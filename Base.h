@@ -6,6 +6,8 @@
 #include <optional>
 #include <math.h>
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 #include "TextureManager.h"
 class Base
@@ -15,7 +17,7 @@ class Base
 		~Base();
 
 		void run();
-		void initializeIcons();
+		void initializeIcons(int iconIndex);
 
 	private:
 		sf::RenderWindow* window;
@@ -29,5 +31,9 @@ class Base
 		sf::Time timePerFrame;
 		float height = 1080;
 		float width = 1920;
+		int iconIndex = 0;
+		int iconX, iconY;
+
+
 };
 

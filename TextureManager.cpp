@@ -21,11 +21,12 @@ void TextureManager::initialize()
 	//bg
 	sf::Texture* bgtex = new sf::Texture;
 	bgtex->loadFromFile("assets\\Textures\\Desert.png");
+	bgtex->setRepeated(true);
 	this->textures["Desert"] = bgtex;
 	//icons
 	std::string name = "";
 
-	for (int i = 0; i <= 149; i++) 
+	for (int i = 0; i <= 479; i++) 
 	{
 		sf::Texture* tex = new sf::Texture;
 		if (i < 10 && i < 100) 

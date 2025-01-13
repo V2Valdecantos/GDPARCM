@@ -1,7 +1,6 @@
 #include "Base.h"
 
 
-
 Base::Base()
 {
 	//config
@@ -14,8 +13,10 @@ Base::Base()
     window->setFramerateLimit(this->frameRate);
     this->background = new sf::Sprite();
     this->background->setTexture(*(TextureManager::getInstance()->getTextureByName("Desert")));
-	this->background->setScale(2,2);
-	this->initializeIcons();
+	this->background->setTextureRect(sf::IntRect(0,0, 1920, 1080 * 8));
+	this->background->setPosition(0, -1080 * 7);
+	this->iconX = 5;
+	this->iconY = 0;
 
 	//fps counter
 	this->fpsCounter = new sf::Text;
@@ -42,87 +43,100 @@ void Base::run()
     sf::Event event;
 	sf::Clock clock;
 	sf::Clock deltaClock;
+	sf::Clock iconClock;
 	sf::Time previousTime = clock.getElapsedTime();
 	sf::Time currentTime;
-    while (this->window->isOpen())
-    {
 
-        // check all the window's events that were triggered since the last iteration of the loop
-        while (window->pollEvent(event))
-        {
-            // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
-                window->close();
-        }
+	while (this->window->isOpen())
+	{
 
+		while (window->pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window->close();
+		}
 
+		//BG Scroll
+		sf::Vector2f pos = this->background->getPosition();
+		pos.y += 100000 * deltaClock.getElapsedTime().asSeconds();
+		this->background->setPosition(pos.x, pos.y);
 
+		if (this->background->getPosition().y > 0)
+		{
+			this->background->setPosition(0, -1080 * 7);
+		}
 
-        // clear the window with black color
-        window->clear(sf::Color::Black);
+		//Icons
+		std::cout << iconClock.getElapsedTime().asSeconds() << std::endl;
 
-        // draw everything here...
-        window->draw(*this->background);
-		for (sf::Sprite* icon : this->icons) 
+		if (iconClock.getElapsedTime().asSeconds() > 0.2f)
+		{
+			if (this->iconIndex <= 479)
+			{
+				this->initializeIcons(this->iconIndex);
+				this->iconIndex++;
+				iconClock.restart();
+			}
+		}
+
+		//Draw
+		window->clear(sf::Color::Black);
+
+		window->draw(*this->background);
+		for (sf::Sprite* icon : this->icons)
 		{
 			window->draw(*icon);
 		}
 		window->draw(*this->fpsCounter);
-        // end the current frame
-        window->display();
+		window->display();
 
+		//FPS Counter
 		currentTime = clock.getElapsedTime();
 		this->fps = 1.0f / (currentTime.asSeconds() - previousTime.asSeconds());
 		previousTime = currentTime;
 		this->fpsCounter->setString("FPS: " + std::to_string((this->fps)));
-
+	
 		deltaClock.restart();
-		
     }
 }
 
-void Base::initializeIcons()
+void Base::initializeIcons(int iconIndex)
 {
-	float x = 5;
-	float y = 0;
 	std::string name = "";
 
-	for (int i = 0; i <= 149; i++)
+	sf::Sprite* icon = new sf::Sprite();
+	if (iconIndex < 10)
 	{
-		sf::Sprite* icon = new sf::Sprite();
-		if (i < 10)
-		{
-			name = "00" + std::to_string(i);
-			icon->setTexture(*(TextureManager::getInstance()->getTextureByName(name)));
-			icon->setPosition(x, y);
-			this->icons.push_back(icon);
-			x += 50;
-		}
-		else if (i >= 10 && i < 100)
-		{
-			name = "0" + std::to_string(i);
-			icon->setTexture(*(TextureManager::getInstance()->getTextureByName(name)));
-			icon->setPosition(x, y);
-			this->icons.push_back(icon);
-			x += 50;
-		}
-		else if (i >= 100)
-		{
-			name = std::to_string(i);
-			icon->setTexture(*(TextureManager::getInstance()->getTextureByName(name)));
-			icon->setPosition(x, y);
-			this->icons.push_back(icon);
-			x += 50;
-		}
-
-		if (i % 37 == 0 && i != 0) 
-		{
-			x = 5;
-			y += 50;
-		}
-
-		icon->setScale(0.75f, 0.75f);
-		std::cout << "Initialized tile" + name << std::endl;
-		std::cout << this->icons.size() << std::endl;
+		name = "00" + std::to_string(iconIndex);
+		icon->setTexture(*(TextureManager::getInstance()->getTextureByName(name)));
+		icon->setPosition(this->iconX, this->iconY);
+		this->icons.push_back(icon);
+		this->iconX += 50;
 	}
+	else if (iconIndex >= 10 && iconIndex < 100)
+	{
+		name = "0" + std::to_string(iconIndex);
+		icon->setTexture(*(TextureManager::getInstance()->getTextureByName(name)));
+		icon->setPosition(this->iconX, this->iconY);
+		this->icons.push_back(icon);
+		this->iconX += 50;
+	}
+	else if (iconIndex >= 100)
+	{
+		name = std::to_string(iconIndex);
+		icon->setTexture(*(TextureManager::getInstance()->getTextureByName(name)));
+		icon->setPosition(this->iconX, this->iconY);
+		this->icons.push_back(icon);
+		this->iconX += 50;
+	}
+
+	if (iconIndex % 37 == 0 && iconIndex != 0)
+	{
+		this->iconX = 5;
+		this->iconY += 50;
+	}
+
+	icon->setScale(0.75f, 0.75f);
+
+
 }
