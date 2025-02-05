@@ -48,12 +48,18 @@
     <ClInclude Include="vec3.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="RTThread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="rtimage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RTThread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,4 +1,5 @@
 #pragma once
+#include "rtweekend.h"
 
 #include "hittable.h"
 #include "material.h"
@@ -17,8 +18,8 @@ public:
 
     double defocus_angle = 0;  // Variation angle of rays through each pixel
     double focus_dist = 10;    // Distance from camera lookfrom point to plane of perfect focus
+    rtimage* image;
 
-private:
     int    image_height;   // Rendered image height
     double pixel_samples_scale;  // Color scale factor for a sum of pixel samples
     point3 center;         // Camera center
@@ -34,9 +35,7 @@ public:
 	{
         initialize();
 
-        rtimage image(image_width, image_height);
-
-        cv::String filename = "C:/Users/Vito/Desktop/GDPARCM/RTIOW/RayTracingInOneWeekend/Png/test.png";
+        cv::String filename = "C:/Users/Vito/Desktop/GDPARCM/RTIOW/RayTracingInOneWeekend/Png/threaded.png";
 
         std::cout << "Image Res:" << image_width << ' ' << image_height << "\n255\n";
 
@@ -57,10 +56,10 @@ public:
             	vec3 color = write_color(pixel_samples_scale * pixel_color);
 
 
-                image.setPixel(i, j, int(color.x()), int(color.y()), int(color.z()), samples_per_pixel);
+                image->setPixel(i, j, int(color.x()), int(color.y()), int(color.z()), samples_per_pixel);
             }
 
-            image.saveImage(filename);
+            image->saveImage(filename);
         }
 
         std::clog << "\rDone.                 \n";
@@ -75,6 +74,7 @@ private:
         pixel_samples_scale = 1.0 / samples_per_pixel;
 
         center = lookfrom;
+        image = new rtimage(image_width, image_height);
 
         // Determine viewport dimensions.
         auto theta = degrees_to_radians(vfov);
@@ -105,6 +105,7 @@ private:
         defocus_disk_v = v * defocus_radius;
     }
 
+public:
     ray get_ray(int i, int j) const
 	{
         // Construct a camera ray originating from the defocus disk and directed at a randomly
