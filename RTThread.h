@@ -1,21 +1,32 @@
 #pragma once
 #include "rtweekend.h"
-#include "hittable.h"
-#include "material.h"
+
 #include "camera.h"
-#include "rtimage.h"
+#include "hittable_list.h"
+#include "random"
 #include "thread"
 
 class RTThread
 {
-	public:
-		RTThread();
-		~RTThread();
 
-		void RenderPixel(camera* cam, int i, int j, const hittable& world);
-		void RenderLine(camera* cam, int j, const hittable& world);
-		bool GetIsDone();
+public:
+	RTThread();
+	~RTThread();
 
-		bool isDone = false;
+	void start();
+	void run();
+	bool isRunning = false;
+
+	int uCol, lCol;
+	int uRow, lRow;
+	int image_height;
+	int image_width;
+	int samples_per_pixel;
+	hittable_list world;
+	int bounces;
+	rtimage* image;
+
+	camera* cam;
+
+	
 };
-

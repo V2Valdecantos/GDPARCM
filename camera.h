@@ -107,45 +107,6 @@ private:
 
 public:
 
-    void RenderPixel(int i, int j, const hittable& world)
-    {
-
-        color pixel_color(0, 0, 0);
-
-        for (int sample = 0; sample < samples_per_pixel; sample++)
-        {
-            ray r = get_ray(i, j);
-            pixel_color += ray_color(r, max_depth, world);;
-        }
-
-        vec3 color = write_color(pixel_samples_scale * pixel_color);
-
-
-       image->setPixel(i, j, int(color.x()), int(color.y()), int(color.z()), samples_per_pixel);
-
-
-        //cam->image->saveImage(filename);
-    }
-
-    void RenderLine(int j, const hittable& world)
-    {
-        color pixel_color(0, 0, 0);
-
-        for (int i = 0; i < image_width; i++)
-        {
-            for (int sample = 0; sample < samples_per_pixel; sample++)
-            {
-                ray r = get_ray(i, j);
-                pixel_color += ray_color(r, max_depth, world);;
-            }
-
-            vec3 color = write_color(pixel_samples_scale * pixel_color);
-
-
-           image->setPixel(i, j, int(color.x()), int(color.y()), int(color.z()), samples_per_pixel);
-        }
-    }
-
     ray get_ray(int i, int j) const
 	{
         // Construct a camera ray originating from the defocus disk and directed at a randomly

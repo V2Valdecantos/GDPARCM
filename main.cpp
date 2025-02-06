@@ -6,6 +6,10 @@
 #include "material.h"
 #include "sphere.h"
 
+#include "RTThread.h"
+#include "vector"
+#include "iostream"
+
 int main()
 {
     hittable_list world;
@@ -62,9 +66,14 @@ int main()
     world.add(make_shared<sphere>(point3(-8, 1, 0), 1.0, material4));
 
     camera cam;
+    
+    int image_width = 1280;
+    int image_height = 720;
+    int num_cores = 12;
 
     cam.aspect_ratio = 16.0 / 9.0;
-    cam.image_width = 128;
+    cam.image_width = image_height;
+    cam.image_height = image_width;
     cam.samples_per_pixel = 500;
     cam.max_depth = 50;
 
@@ -76,6 +85,57 @@ int main()
     cam.defocus_angle = 0.6;
     cam.focus_dist = 10.0;
 
-    cam.render(world);
+    //cam.render(world);
+    rtimage* image = new rtimage(image_width, image_height);
+
+    std::vector<RTThread*> threads;
+    cv::String filename = "C:/Users/Vito/Desktop/GDPARCM/RTIOW/RayTracingInOneWeekend/Png/threaded.png";
+
+    int widthWindow = rint(image_width / num_cores);
+    int lRow = 0;
+    int uRow = widthWindow;
+
+    for (int i = 0; i < num_cores; i++) 
+    {
+        std::cout << " " << lRow << " " << uRow << std::endl;
+
+        RTThread* rtThread = new RTThread();
+        rtThread->image_height = image_height;
+        rtThread->image_width = image_width;
+        rtThread->image = image;
+        rtThread->cam = &cam;
+        rtThread->bounces = 50;
+        rtThread->samples_per_pixel = 500;
+        rtThread->world = world;
+
+        rtThread->lRow = lRow;
+        rtThread->uRow = uRow;
+        rtThread->lCol = 0;
+        rtThread->uCol = image_height;
+
+        rtThread->start();
+
+        threads.push_back(rtThread);
+
+        lRow = lRow + widthWindow;
+        uRow = uRow + widthWindow;
+
+    }
+
+    bool standby = true;
+    while (standby) 
+    {
+        for (int i = 0; i < threads.size(); i++) 
+        {
+            standby = false;
+            if (threads[i]->isRunning) {
+                standby = true;
+                break;
+            }
+        }
+    }
+
+    image->saveImage(filename);
+    std::cout << "Done." << std::endl;
 }
 

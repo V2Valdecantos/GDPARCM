@@ -1,5 +1,6 @@
 #include "RTThread.h"
 
+
 RTThread::RTThread()
 {
 }
@@ -8,47 +9,36 @@ RTThread::~RTThread()
 {
 }
 
-void RTThread::RenderPixel(camera* cam, int i, int j, const hittable& world)
+void RTThread::start()
 {
-
-    color pixel_color(0, 0, 0);
-
-    for (int sample = 0; sample < cam->samples_per_pixel; sample++)
-    {
-        ray r = cam->get_ray(i, j);
-        pixel_color += cam->ray_color(r, cam->max_depth, world);;
-    }
-
-    vec3 color = write_color(cam->pixel_samples_scale * pixel_color);
-
-
-    cam->image->setPixel(i, j, int(color.x()), int(color.y()), int(color.z()), cam->samples_per_pixel);
-
-    this->isDone = true;
-
-    //cam->image->saveImage(filename);
+	this->isRunning = true;
+	std::thread t(&RTThread::run, this);
+	t.detach();
 }
 
-void RTThread::RenderLine(camera* cam, int j, const hittable& world)
+void RTThread::run()
 {
-    color pixel_color(0, 0, 0);
 
-    for (int i = 0; i < cam->image_width; i++)
-    {
-        for (int sample = 0; sample < cam->samples_per_pixel; sample++)
-        {
-            ray r = cam->get_ray(i, j);
-            pixel_color += cam->ray_color(r, cam->max_depth, world);;
-        }
+	for (int j = uCol - 1; j >= lCol; j--) 
+	{
+		for (int i = lRow; i < uRow; i++) 
+		{
+			color pixels(0.0f, 0.0f, 0.0f);
 
-        vec3 color = write_color(cam->pixel_samples_scale * pixel_color);
+			for (int s = 0; s < samples_per_pixel; s++) 
+			{
+				float u = (float(i) + rand() / (image_width - 1));
+				float v = (float(j) + rand() / (image_height - 1));
 
+				ray r = cam->get_ray(u, v);
+				pixels = pixels + cam->ray_color(r, bounces, world);
 
-        cam->image->setPixel(i, j, int(color.x()), int(color.y()), int(color.z()), cam->samples_per_pixel);
-    }
-}
+			}
 
-bool RTThread::GetIsDone()
-{
-    return this->isDone;
+			this->image->setPixel(i, j, pixels.x(), pixels.y(), pixels.z(), samples_per_pixel);
+
+		}
+	}
+
+	this->isRunning = false;
 }
