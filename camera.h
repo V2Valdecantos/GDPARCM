@@ -65,7 +65,6 @@ public:
         std::clog << "\rDone.                 \n";
     }
 
-private:
     void initialize()
 	{
         image_height = int(image_width / aspect_ratio);
@@ -157,5 +156,28 @@ public:
         vec3 unit_direction = unit_vector(r.direction());
         auto a = 0.5 * (unit_direction.y() + 1.0);
         return (1.0 - a) * color(1.0, 1.0, 1.0) + a * color(0.5, 0.7, 1.0);
+    }
+
+    vec3 write_color(const color& pixel_color)
+    {
+        auto r = pixel_color.x();
+        auto g = pixel_color.y();
+        auto b = pixel_color.z();
+
+        // Apply a linear to gamma transform for gamma 2
+        r = linear_to_gamma(r);
+        g = linear_to_gamma(g);
+        b = linear_to_gamma(b);
+
+        // Translate the [0,1] component values to the byte range [0,255].
+        static const interval intensity(0.000, 0.999);
+        int rbyte = int(256 * intensity.clamp(r));
+        int gbyte = int(256 * intensity.clamp(g));
+        int bbyte = int(256 * intensity.clamp(b));
+
+        // Write out the pixel color components.
+        //out << rbyte << ' ' << gbyte << ' ' << bbyte << '\n';
+
+        return (vec3(rbyte, gbyte, bbyte));
     }
 };

@@ -67,14 +67,14 @@ int main()
 
     camera cam;
     
-    int image_width = 1280;
-    int image_height = 720;
-    int num_cores = 12;
+    int image_width = 1080;
+    int image_height = 1080;
+    int num_cores = 1080;
 
     cam.aspect_ratio = 16.0 / 9.0;
     cam.image_width = image_height;
     cam.image_height = image_width;
-    cam.samples_per_pixel = 500;
+    cam.samples_per_pixel = 100;
     cam.max_depth = 50;
 
     cam.vfov = 20;
@@ -83,37 +83,40 @@ int main()
     cam.vup = vec3(0, 1, 0);
 
     cam.defocus_angle = 0.6;
-    cam.focus_dist = 10.0;
-
+    cam.focus_dist = 10.0; 
+    
+    cam.initialize();
     //cam.render(world);
+
     rtimage* image = new rtimage(image_width, image_height);
 
     std::vector<RTThread*> threads;
-    cv::String filename = "C:/Users/Vito/Desktop/GDPARCM/RTIOW/RayTracingInOneWeekend/Png/threaded.png";
+    cv::String filename = "C:/Users/Vito/Desktop/GDPARCM/AssetLoader/Png/threaded.png";
 
     int widthWindow = rint(image_width / num_cores);
     int lRow = 0;
     int uRow = widthWindow;
 
-    for (int i = 0; i < num_cores; i++) 
+    for (int i = 0; i < num_cores - 1; i++) 
     {
         std::cout << " " << lRow << " " << uRow << std::endl;
 
         RTThread* rtThread = new RTThread();
+        rtThread->name = "Thread " + std::to_string(i);
         rtThread->image_height = image_height;
         rtThread->image_width = image_width;
         rtThread->image = image;
         rtThread->cam = &cam;
         rtThread->bounces = 50;
-        rtThread->samples_per_pixel = 500;
-        rtThread->world = world;
+        rtThread->samples_per_pixel = 100;
+        rtThread->filename = filename;
 
         rtThread->lRow = lRow;
         rtThread->uRow = uRow;
         rtThread->lCol = 0;
         rtThread->uCol = image_height;
 
-        rtThread->start();
+        rtThread->start(world);
 
         threads.push_back(rtThread);
 
@@ -135,7 +138,7 @@ int main()
         }
     }
 
-    image->saveImage(filename);
+    //image->saveImage(filename);
     std::cout << "Done." << std::endl;
 }
 
