@@ -39,16 +39,18 @@ void RTThread::run(const hittable& world)
 
 			}
 
-			vec3 color = cam->write_color(samples_per_pixel * pixels);
+			//pixels *= samples_per_pixel;
+
+			std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
 			pixel_guard.lock();
-			this->image->setPixel(i, j, color.x(), color.y(), color.z(), samples_per_pixel);
-			this->image->saveImage(filename);
+			this->image->setPixel(i, j, int(pixels.x()), int(pixels.y()), int(pixels.z()), samples_per_pixel);
 			pixel_guard.unlock();
 		}
 	}
-
-	//this->image->saveImage(filename);
+	pixel_guard.lock();
+	this->image->saveImage(filename);
+	pixel_guard.unlock();
 	std::cout << this->name << ": Done. \n";
 	this->isRunning = false;
 }

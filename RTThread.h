@@ -32,7 +32,7 @@ public:
 
 	camera* cam;
 	cv::String filename;
-
+	 
 	std::mutex pixel_guard;
 
 	

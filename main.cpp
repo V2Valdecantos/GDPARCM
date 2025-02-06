@@ -67,14 +67,14 @@ int main()
 
     camera cam;
     
-    int image_width = 1080;
-    int image_height = 1080;
-    int num_cores = 1080;
+    int image_width = 128;
+    int image_height = 128;
+    int num_cores = 24;
 
-    cam.aspect_ratio = 16.0 / 9.0;
-    cam.image_width = image_height;
-    cam.image_height = image_width;
-    cam.samples_per_pixel = 100;
+    cam.aspect_ratio = 1;
+    cam.image_width = image_width;
+    cam.image_height = image_height;
+    cam.samples_per_pixel = 200;
     cam.max_depth = 50;
 
     cam.vfov = 20;
@@ -97,7 +97,7 @@ int main()
     int lRow = 0;
     int uRow = widthWindow;
 
-    for (int i = 0; i < num_cores - 1; i++) 
+    for (int i = 0; i <= num_cores + 1; i++) 
     {
         std::cout << " " << lRow << " " << uRow << std::endl;
 
@@ -108,11 +108,12 @@ int main()
         rtThread->image = image;
         rtThread->cam = &cam;
         rtThread->bounces = 50;
-        rtThread->samples_per_pixel = 100;
+        rtThread->samples_per_pixel = 200;
         rtThread->filename = filename;
 
         rtThread->lRow = lRow;
         rtThread->uRow = uRow;
+
         rtThread->lCol = 0;
         rtThread->uCol = image_height;
 
@@ -138,7 +139,7 @@ int main()
         }
     }
 
-    //image->saveImage(filename);
+    image->saveImage(filename);
     std::cout << "Done." << std::endl;
 }
 
