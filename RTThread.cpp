@@ -22,7 +22,7 @@ void RTThread::start(const hittable& world)
 
 void RTThread::run(const hittable& world)
 {
-	std::cout << this->name << ": Start. \n";
+	//std::cout << this->name << ": Start. \n";
 	for (int j = uCol - 1; j >= lCol; j--) 
 	{
 		for (int i = lRow; i < uRow; i++) 
@@ -44,28 +44,27 @@ void RTThread::run(const hittable& world)
 
 			//pixels *= samples_per_pixel;
 
-			std::this_thread::sleep_for(std::chrono::milliseconds(100));
-			this->setPixelColor(i, j, pixels);
+			//this->setPixelColor(i, j, pixels);
 			//guard->lock();
-			//this->image->setPixel(i, j, int(pixels.x()), int(pixels.y()), int(pixels.z()), samples_per_pixel);
-			//this->image->saveImage(filename);
+			this->image->setPixel(i, j, int(pixels.x()), int(pixels.y()), int(pixels.z()), samples_per_pixel);
 			//guard->unlock();
 			this->pixelsRendered += 1;
 		}
 	}
 
 	//guard->lock();
-	//this->image->saveImage(filename);
+	this->image->saveImage(filename);
 	//guard->unlock();
 
-	std::cout << this->name << ": Done. \n";
+	//std::cout << this->name << ": Done. \n";
 	this->isRunning = false;
 }
 
 void RTThread::setPixelColor(int i, int j, color pixel)
 {
-	std::lock_guard<std::mutex> lock(*guard);
+	//std::lock_guard<std::mutex> lock(*guard);
+	guard->lock();
 	this->image->setPixel(i, j, int(pixel.x()), int(pixel.y()), int(pixel.z()), samples_per_pixel);
 	this->image->saveImage(filename);
-	//guard->unlock();
+	guard->unlock();
 }

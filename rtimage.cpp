@@ -11,6 +11,7 @@ rtimage::rtimage(const int imageWidth, const int imageHeight)
 
 void rtimage::setPixel(int x, int y, float r, float g, float b, int samplesPerPixel)
 {
+	guard.lock();
 	cv::Mat imgChannels[3];
 	cv::split(*this->pixels, imgChannels);
 
@@ -19,12 +20,15 @@ void rtimage::setPixel(int x, int y, float r, float g, float b, int samplesPerPi
 	imgChannels[2].at<uchar>(this->imageHeight - 1 - y, x) = r;
 
 	cv::merge(imgChannels, 3, *this->pixels);
+	guard.unlock();
 }
 
-void rtimage::saveImage(cv::String& filename) const
+void rtimage::saveImage(cv::String& filename)
 {
+	guard.lock();
 	cv::Mat flipped;
 	cv::flip(*this->pixels, flipped, 0);  // Flip vertically (flipCode = 0)
 	cv::imwrite(filename, flipped);
+	guard.unlock();
 }
 
