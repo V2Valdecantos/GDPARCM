@@ -18,6 +18,8 @@ public:
 
 	void start(const hittable& world);
 	void run(const hittable& world);
+
+	void setPixelColor(int i, int j, color pixel);
 	bool isRunning = false;
 
 	std::string name;
@@ -33,7 +35,8 @@ public:
 	camera* cam;
 	cv::String filename;
 	 
-	std::mutex pixel_guard;
+	std::mutex* guard;
+	int pixelsRendered = 0;
 
 	
 };
