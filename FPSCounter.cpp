@@ -20,10 +20,10 @@ void FPSCounter::initialize()
 
 	this->statsText = new sf::Text();
 	this->statsText->setFont(*font);
-	this->statsText->setPosition(BaseRunner::WINDOW_WIDTH - 150, BaseRunner::WINDOW_HEIGHT - 70);
+	this->statsText->setPosition(BaseRunner::WINDOW_WIDTH - 250, BaseRunner::WINDOW_HEIGHT - 100);
 	this->statsText->setOutlineColor(sf::Color(1.0f, 1.0f, 1.0f));
 	this->statsText->setOutlineThickness(2.5f);
-	this->statsText->setCharacterSize(35);
+	this->statsText->setCharacterSize(50);
 }
 
 void FPSCounter::processInput(sf::Event event)

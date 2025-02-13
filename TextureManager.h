@@ -1,6 +1,7 @@
 #pragma once
 #include <unordered_map>
 #include "SFML/Graphics.hpp"
+#include "ThreadPool.h"
 
 class IExecutionEvent;
 class TextureManager
@@ -32,6 +33,8 @@ private:
 	HashTable textureMap;
 	TextureList baseTextureList;
 	TextureList streamTextureList;
+
+	ThreadPool* threadPool;
 
 	const std::string STREAMING_PATH = "Media/Streaming/";
 	int streamingAssetCount = 0;

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <thread>
+#include "IWorkerAction.h"
 
 /// <summary>
 /// Representation of a Java/C# like thread class. The behavior must be inherited by a class that needs to be threaded.
