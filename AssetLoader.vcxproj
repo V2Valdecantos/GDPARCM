@@ -141,12 +141,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Base.cpp" />
+    <ClCompile Include="AGameObject.cpp" />
+    <ClCompile Include="BaseRunner.cpp" />
+    <ClCompile Include="BGObject.cpp" />
+    <ClCompile Include="FPSCounter.cpp" />
+    <ClCompile Include="GameObjectManager.cpp" />
+    <ClCompile Include="HelloWorldThread.cpp" />
+    <ClCompile Include="IconObject.cpp" />
+    <ClCompile Include="IETThread.cpp" />
+    <ClCompile Include="IExecutionEvent.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="StreamAssetLoader.cpp" />
+    <ClCompile Include="StringUtils.cpp" />
+    <ClCompile Include="TextureDisplay.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Base.h" />
+    <ClInclude Include="AGameObject.h" />
+    <ClInclude Include="BaseRunner.h" />
+    <ClInclude Include="BGObject.h" />
+    <ClInclude Include="FPSCounter.h" />
+    <ClInclude Include="GameObjectManager.h" />
+    <ClInclude Include="HelloWorldThread.h" />
+    <ClInclude Include="IconObject.h" />
+    <ClInclude Include="IETThread.h" />
+    <ClInclude Include="IExecutionEvent.h" />
+    <ClInclude Include="StreamAssetLoader.h" />
+    <ClInclude Include="StringUtils.h" />
+    <ClInclude Include="TextureDisplay.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

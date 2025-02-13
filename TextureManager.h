@@ -1,30 +1,41 @@
 #pragma once
-#include <vector>
 #include <unordered_map>
 #include "SFML/Graphics.hpp"
-#include "thread"
-#include <iostream>
 
+class IExecutionEvent;
 class TextureManager
 {
-	public:
-		void initialize();
-		sf::Texture* getTextureByName(std::string name);
-	private:
-		std::unordered_map<std::string, sf::Texture*> textures;
+public:
+	typedef std::string String;
+	typedef std::vector<sf::Texture*> TextureList;
+	typedef std::unordered_map<String, TextureList> HashTable;
+	
+public:
+	static TextureManager* getInstance();
+	void loadFromAssetList(); //loading of all assets needed for startup
+	void loadStreamingAssets(); //loading of assets during runtime
+	void loadSingleStreamAsset(int index, IExecutionEvent* executionEvent); //loads a single streaming asset based on index in directory
+	sf::Texture* getFromTextureMap(const String assetName, int frameIndex);
+	int getNumFrames(const String assetName);
 
+	sf::Texture* getStreamTextureFromList(const int index);
+	int getNumLoadedStreamTextures() const;
 
-	private:
-		static TextureManager* P_SHARED_INSTANCE;
+	void instantiateAsTexture(String path, String assetName, bool isStreaming);
 
-	private:
-		TextureManager();
-		~TextureManager();
-		TextureManager(TextureManager const&);
-		TextureManager& operator = (TextureManager const&);
+private:
+	TextureManager();
+	TextureManager(TextureManager const&) {};             // copy constructor is private
+	TextureManager& operator=(TextureManager const&) {};  // assignment operator is private
+	static TextureManager* sharedInstance;
 
-	public:
-		static TextureManager* getInstance();
-		static void destroy();
+	HashTable textureMap;
+	TextureList baseTextureList;
+	TextureList streamTextureList;
+
+	const std::string STREAMING_PATH = "Media/Streaming/";
+	int streamingAssetCount = 0;
+
+	void countStreamingAssets();
+
 };
-
