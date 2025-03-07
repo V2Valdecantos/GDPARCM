@@ -63,6 +63,7 @@ void TextureDisplay::spawnObject()
 		this->columnGrid = 0;
 		this->rowGrid++;
 	}
+	iconObj->setScale(0.008f, 0.008f);
 	GameObjectManager::getInstance()->addObject(iconObj);
 
 	this->guard.unlock();
