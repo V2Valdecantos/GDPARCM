@@ -30,8 +30,8 @@ private:
 
 	int columnGrid = 0; int rowGrid = 0;
 	int numDisplayed = 0;
-	const int MAX_COLUMN = 28;
-	const int MAX_ROW = 22;
+	const int MAX_COLUMN = 7;
+	const int MAX_ROW = 3;
 
 	Mutex guard; //used to avoid possible race conditions when spawning objects. Not really required for this exercise. Will be explained in future lessons.
 	void spawnObject();

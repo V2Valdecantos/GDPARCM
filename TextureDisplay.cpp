@@ -50,7 +50,7 @@ void TextureDisplay::spawnObject()
 	this->iconList.push_back(iconObj);
 
 	//set position
-	int IMG_WIDTH = 68; int IMG_HEIGHT = 68;
+	int IMG_WIDTH = 256; int IMG_HEIGHT = 256;
 	float x = this->columnGrid * IMG_WIDTH;
 	float y = this->rowGrid * IMG_HEIGHT;
 	iconObj->setPosition(x, y);
@@ -63,7 +63,6 @@ void TextureDisplay::spawnObject()
 		this->columnGrid = 0;
 		this->rowGrid++;
 	}
-	iconObj->setScale(0.008f, 0.008f);
 	GameObjectManager::getInstance()->addObject(iconObj);
 
 	this->guard.unlock();
