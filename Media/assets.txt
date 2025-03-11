@@ -1,2 +1,3 @@
 Media/Textures/bg.jpg
-Media/Textures/Eagle.png
+Media/Textures/1.png
+Media/Textures/2.png

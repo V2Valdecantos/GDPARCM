@@ -16,6 +16,8 @@ class Player : public AGameObject
 
 		bool isMovingLeft = false;
 		bool isMovingRight = false;
+		bool isMovingUp = false;
+		bool isMovingDown = false;
 
 };
 
