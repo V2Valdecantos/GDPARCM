@@ -1,1 +1,2 @@
 Media/Textures/bg.jpg
+Media/Textures/Eagle.png

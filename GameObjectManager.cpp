@@ -51,7 +51,8 @@ void GameObjectManager::update(sf::Time deltaTime)
 //draws the object if it contains a sprite
 void GameObjectManager::draw(sf::RenderWindow* window) {
 	for (int i = 0; i < this->gameObjectList.size(); i++) {
-		this->gameObjectList[i]->draw(window);
+		if (this->gameObjectList[i]->getIsActive())
+			this->gameObjectList[i]->draw(window);
 	}
 }
 

@@ -68,6 +68,9 @@
     <ClCompile Include="ThreadPool.cpp">
       <Filter>Source Files\Threads</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseRunner.h">
@@ -121,5 +124,9 @@
     <ClInclude Include="IWorkerAction.h">
       <Filter>Source Files\Threads</Filter>
     </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h" />
   </ItemGroup>
 </Project>

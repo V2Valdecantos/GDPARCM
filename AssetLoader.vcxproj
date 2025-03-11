@@ -151,6 +151,7 @@
     <ClCompile Include="IETThread.cpp" />
     <ClCompile Include="IExecutionEvent.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="PoolWorkerThread.cpp" />
     <ClCompile Include="StreamAssetLoader.cpp" />
     <ClCompile Include="StringUtils.cpp" />
@@ -169,7 +170,9 @@
     <ClInclude Include="IETThread.h" />
     <ClInclude Include="IExecutionEvent.h" />
     <ClInclude Include="IFinishedTask.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="IWorkerAction.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="PoolWorkerThread.h" />
     <ClInclude Include="StreamAssetLoader.h" />
     <ClInclude Include="StringUtils.h" />

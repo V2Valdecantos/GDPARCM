@@ -14,6 +14,14 @@ AGameObject::String AGameObject::getName() {
 	return this->name;
 }
 
+void AGameObject::onKeyDown(sf::Event::KeyEvent key)
+{
+}
+
+void AGameObject::onKeyUp(sf::Event::KeyEvent key)
+{
+}
+
 void AGameObject::draw(sf::RenderWindow* targetWindow) {
 	if (this->sprite != nullptr) {
 		this->sprite->setPosition(this->posX, this->posY);
@@ -53,6 +61,16 @@ sf::Vector2f AGameObject::getPosition()
 sf::Vector2f AGameObject::getScale()
 {
 	return this->sprite->getScale();
+}
+
+bool AGameObject::getIsActive()
+{
+	return this->isActive;
+}
+
+void AGameObject::setActive(bool active)
+{
+	this->isActive = active;
 }
 
 sf::FloatRect AGameObject::getLocalBounds()

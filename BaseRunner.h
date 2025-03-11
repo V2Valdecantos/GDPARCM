@@ -23,6 +23,7 @@ private:
 
 	void render();
 	void processEvents();
+	void processInput(sf::Event::KeyEvent key);
 	void update(sf::Time elapsedTime);
 	
 };

@@ -7,6 +7,7 @@
 #include "TextureManager.h"
 #include "TextureDisplay.h"
 #include "FPSCounter.h"
+#include "Player.h"
 
 /// <summary>
 /// This demonstrates a running parallax background where after X seconds, a batch of assets will be streamed and loaded.
@@ -28,6 +29,10 @@ BaseRunner::BaseRunner() :
 	//load objects
 	BGObject* bgObject = new BGObject("BGObject");
 	GameObjectManager::getInstance()->addObject(bgObject);
+
+	Player* player = new Player;
+	GameObjectManager::getInstance()->addObject(player);
+	
 
 	TextureDisplay* display = new TextureDisplay();
 	GameObjectManager::getInstance()->addObject(display);
@@ -73,6 +78,7 @@ void BaseRunner::processEvents()
 		switch (event.type) {
 		
 		default: GameObjectManager::getInstance()->processInput(event); break;
+			
 		case sf::Event::Closed:
 			this->window.close();
 			break;
@@ -81,6 +87,13 @@ void BaseRunner::processEvents()
 	}
 }
 
+void BaseRunner::processInput(sf::Event::KeyEvent key) 
+{
+	switch (key.code == sf::Keyboard::W) 
+	{
+
+	}
+}
 void BaseRunner::update(sf::Time elapsedTime) {
 	GameObjectManager::getInstance()->update(elapsedTime);
 }
