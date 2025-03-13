@@ -15,7 +15,7 @@ public:
 
 	static BaseRunner* getInstance();
 	static BaseRunner* sharedInstance;
-	float getFPS() const;
+	int getFPS() const;
 	sf::Time elapsed;
 
 private:

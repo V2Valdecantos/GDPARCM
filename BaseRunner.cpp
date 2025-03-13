@@ -83,9 +83,9 @@ BaseRunner* BaseRunner::getInstance()
 	return sharedInstance;
 }
 
-float BaseRunner::getFPS() const
+int BaseRunner::getFPS() const
 {
-	return this->fps;
+	return int(this->fps);
 }
 
 void BaseRunner::processEvents()
