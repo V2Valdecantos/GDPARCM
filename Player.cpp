@@ -1,5 +1,7 @@
 #include "Player.h"
 #include "TextureManager.h"
+#include "GameObjectManager.h"
+#include "SFXManager.h"
 Player::Player() : AGameObject("Player")
 {
 }
@@ -15,10 +17,9 @@ void Player::initialize()
 	texture->setRepeated(true);
 	this->sprite->setTexture(*texture);
 	sf::Vector2u textureSize = this->sprite->getTexture()->getSize();
-	//make BG height x k to emulate repeating BG.
-	//this->sprite->setTextureRect(sf::IntRect(0,0,BaseRunner::WINDOW_WIDTH, BaseRunner::WINDOW_HEIGHT)); 
 	this->setPosition(500, 900);
-	this->setScale(0.1, 0.1);
+	this->setScale(0.15, 0.15);
+	this->sprite->setScale(0.15, 0.15);
 }
 
 void Player::update(sf::Time deltaTime)
@@ -48,6 +49,38 @@ void Player::update(sf::Time deltaTime)
 		this->posY = 0;
 	if (this->posY + (this->getLocalBounds().height * this->scaleX) >= 1080)
 		this->posY = 1080 - (this->getLocalBounds().height * this->scaleX);
+
+	for (AGameObject* obj : GameObjectManager::getInstance()->getAllObjects()) 
+	{
+		if (this->sprite->getGlobalBounds().intersects(obj->getGlobalBounds()) && obj != this) 
+		{
+			this->isHappy = true;
+			this->elapsedTime = 0;
+			GameObjectManager::getInstance()->deleteObject(obj);
+			SFXManager::getInstance()->getSound(SFXType::COLLECT)->play();
+		}
+	}
+
+	if (this->isHappy) 
+	{
+		this->elapsedTime += deltaTime.asSeconds();
+		if (!this->texChanged) 
+		{
+			sf::Texture* texture = TextureManager::getInstance()->getFromTextureMap("2", 0);
+			this->sprite->setTexture(*texture);
+			this->texChanged = true;
+		}
+
+		if (this->elapsedTime >= this->cooldown) 
+		{
+			this->isHappy = false;
+			sf::Texture* texture = TextureManager::getInstance()->getFromTextureMap("1", 0);
+			this->sprite->setTexture(*texture);
+			this->texChanged = false;
+
+		}
+	}
+	
 }
 
 void Player::processInput(sf::Event event)
@@ -63,16 +96,16 @@ void Player::onKeyDown(sf::Event::KeyEvent key)
 {
 	switch (key.code) 
 	{
-		case sf::Keyboard::W:
-			this->isMovingUp = true;
-			break;
+		//case sf::Keyboard::W:
+		//	this->isMovingUp = true;
+		//	break;
 
 		case sf::Keyboard::A:
 			this->isMovingLeft = true;
 			break;
 
-		case sf::Keyboard::S:
-			this->isMovingDown = true;
+		//case sf::Keyboard::S:
+		//	this->isMovingDown = true;
 			break;
 
 		case sf::Keyboard::D:
@@ -86,17 +119,17 @@ void Player::onKeyUp(sf::Event::KeyEvent key)
 {
 	switch (key.code)
 	{
-	case sf::Keyboard::W:
-		this->isMovingUp = false;
-		break;
+	//case sf::Keyboard::W:
+	//	this->isMovingUp = false;
+	//	break;
 
 	case sf::Keyboard::A:
 		this->isMovingLeft = false;
 		break;
 
-	case sf::Keyboard::S:
-		this->isMovingDown = false;
-		break;
+	//case sf::Keyboard::S:
+	//	this->isMovingDown = false;
+	//	break;
 
 	case sf::Keyboard::D:
 		this->isMovingRight = false;

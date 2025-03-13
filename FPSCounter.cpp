@@ -20,7 +20,7 @@ void FPSCounter::initialize()
 
 	this->statsText = new sf::Text();
 	this->statsText->setFont(*font);
-	this->statsText->setPosition(BaseRunner::WINDOW_WIDTH - 250, BaseRunner::WINDOW_HEIGHT - 100);
+	this->statsText->setPosition(BaseRunner::WINDOW_WIDTH - 250, 25);
 	this->statsText->setOutlineColor(sf::Color(1.0f, 1.0f, 1.0f));
 	this->statsText->setOutlineThickness(2.5f);
 	this->statsText->setCharacterSize(50);
@@ -46,7 +46,7 @@ void FPSCounter::draw(sf::RenderWindow* targetWindow)
 void FPSCounter::updateFPS(sf::Time elapsedTime)
 {	
 	this->updateTime += elapsedTime;
-	if (this->updateTime >= sf::seconds(0.25f))
+	if (this->updateTime >= sf::seconds(0.5f))
 	{
 		this->updateTime = sf::seconds(0.0f);
 		this->statsText->setString("FPS: " + std::to_string(BaseRunner::getInstance()->getFPS()) + "\n");

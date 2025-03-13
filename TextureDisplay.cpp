@@ -4,6 +4,7 @@
 #include "BaseRunner.h"
 #include "GameObjectManager.h"
 #include "IconObject.h"
+#include "VideoObject.h"
 TextureDisplay::TextureDisplay(): AGameObject("TextureDisplay")
 {
 	
@@ -33,12 +34,23 @@ void TextureDisplay::update(sf::Time deltaTime)
 		TextureManager::getInstance()->loadSingleStreamAsset(this->numDisplayed, this);
 		this->numDisplayed++;
 		this->ticks = 0.0f;
+		//this->totalFrames = TextureManager::getInstance()->getTotalFrames();
+	}
+
+	if (!this->isDone && this->framesLoaded == this->totalFrames) 
+	{
+		this->isDone = true;
+		this->startVideo();
+		
 	}
 }
 
 void TextureDisplay::onFinishedExecution()
 {
-	this->spawnObject(); //executes spawn once the texture is ready.
+	//this->spawnObject(); //executes spawn once the texture is ready.
+	this->guard.lock();
+	this->framesLoaded++;
+	this->guard.unlock();
 }
 
 void TextureDisplay::spawnObject()
@@ -53,8 +65,8 @@ void TextureDisplay::spawnObject()
 	int IMG_WIDTH = 256; int IMG_HEIGHT = 256;
 	float x = this->columnGrid * IMG_WIDTH;
 	float y = this->rowGrid * IMG_HEIGHT;
-	iconObj->setPosition(x, y);
-
+	//iconObj->setPosition(x, y);
+	iconObj->setPosition(0, 0);
 	std::cout << "Set position: " << x << " " << y << std::endl;
 
 	this->columnGrid++;
@@ -66,4 +78,12 @@ void TextureDisplay::spawnObject()
 	GameObjectManager::getInstance()->addObject(iconObj);
 
 	this->guard.unlock();
+}
+
+void TextureDisplay::startVideo()
+{
+	GameObjectManager::getInstance()->setLoadedVideo(true);
+	VideoObject* video = new VideoObject("cooking");
+	GameObjectManager::getInstance()->addObject(video);
+
 }

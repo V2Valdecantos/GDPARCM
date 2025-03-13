@@ -1,13 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include "Settings.h"
 
 using namespace std;
 class BaseRunner : private sf::NonCopyable
 {
 public:
 	static const sf::Time	TIME_PER_FRAME;
-	static const int WINDOW_WIDTH = 1920;
-	static const int WINDOW_HEIGHT = 1080;
+	static const int WINDOW_WIDTH = WINDOW_WIDTH;
+	static const int WINDOW_HEIGHT = WINDOW_HEIGHT;
 
 	BaseRunner();
 	void run();
@@ -15,6 +16,7 @@ public:
 	static BaseRunner* getInstance();
 	static BaseRunner* sharedInstance;
 	float getFPS() const;
+	sf::Time elapsed;
 
 private:
 	

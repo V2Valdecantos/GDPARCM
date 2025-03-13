@@ -23,6 +23,11 @@ public:
 	int getNumLoadedStreamTextures() const;
 
 	void instantiateAsTexture(String path, String assetName, bool isStreaming);
+	void instantiateAsVideoFrame(String path, String assetName, int frameIndex);
+
+	sf::Texture* getVideoFrame(int index);
+	int getFrameCount();
+	int getTotalFrames();
 
 private:
 	TextureManager();
@@ -33,6 +38,10 @@ private:
 	HashTable textureMap;
 	TextureList baseTextureList;
 	TextureList streamTextureList;
+
+	std::unordered_map<int, sf::Texture*> videoFrameMap;
+	TextureList videoFrames;
+	int totalFrames = 0;
 
 	ThreadPool* threadPool;
 

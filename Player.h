@@ -19,5 +19,10 @@ class Player : public AGameObject
 		bool isMovingUp = false;
 		bool isMovingDown = false;
 
+		float elapsedTime;
+		float cooldown = 1.0f;
+		bool isHappy = false;
+		bool texChanged = false;
+
 };
 

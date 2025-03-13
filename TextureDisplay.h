@@ -32,8 +32,14 @@ private:
 	int numDisplayed = 0;
 	const int MAX_COLUMN = 7;
 	const int MAX_ROW = 3;
+	int totalFrames = 690;
+	int framesLoaded = 0;
+
 
 	Mutex guard; //used to avoid possible race conditions when spawning objects. Not really required for this exercise. Will be explained in future lessons.
 	void spawnObject();
+	void startVideo();
+
+	bool isDone = false;
 };
 

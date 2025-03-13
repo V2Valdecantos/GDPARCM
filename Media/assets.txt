@@ -1,3 +1,6 @@
 Media/Textures/bg.jpg
 Media/Textures/1.png
 Media/Textures/2.png
+Media/Textures/fish.png
+Media/Textures/meat.png
+Media/Textures/herb.png

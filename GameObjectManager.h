@@ -22,16 +22,26 @@ class GameObjectManager
 		void update(sf::Time deltaTime);
 		void draw(sf::RenderWindow* window);
 		void addObject(AGameObject* gameObject);
+		void addObjectToScene(AGameObject* gameObject); //the scene loaded in the background
 		void deleteObject(AGameObject* gameObject);
 		void deleteObjectByName(AGameObject::String name);
 
+		void setLoadedVideo(bool loaded);
+		AGameObject* fpsCounter;
+		AGameObject* textureDisplay;
+		AGameObject* background;
 	private:
 		GameObjectManager() {};
 		GameObjectManager(GameObjectManager const&) {};             // copy constructor is private
 		GameObjectManager& operator=(GameObjectManager const&) {};  // assignment operator is private
 		static GameObjectManager* sharedInstance;
 
+		bool loaded = false;
+		float elapsed = 0;
 		HashTable gameObjectMap;
 		List gameObjectList;
+
+		HashTable loadedSceneObjectMap;
+		List loadedSceneObjects;
 };
 

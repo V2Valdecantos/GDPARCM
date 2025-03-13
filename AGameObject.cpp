@@ -77,3 +77,8 @@ sf::FloatRect AGameObject::getLocalBounds()
 {
 	return this->sprite->getLocalBounds();
 }
+
+sf::FloatRect AGameObject::getGlobalBounds()
+{
+	return this->sprite->getGlobalBounds();
+}

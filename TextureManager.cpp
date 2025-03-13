@@ -21,7 +21,7 @@ TextureManager* TextureManager::getInstance() {
 
 TextureManager::TextureManager()
 {
-	this->threadPool = new ThreadPool("Texture Pool", 6);
+	this->threadPool = new ThreadPool("Texture Pool", 12);
 	this->threadPool->startScheduler();
 	this->countStreamingAssets();
 }
@@ -72,7 +72,10 @@ void TextureManager::loadSingleStreamAsset(int index, IExecutionEvent* execution
 		}
 
 		fileNum++;
+		this->totalFrames = fileNum;
 	}
+
+	
 }
 
 sf::Texture* TextureManager::getFromTextureMap(const String assetName, int frameIndex)
@@ -131,4 +134,29 @@ void TextureManager::instantiateAsTexture(String path, String assetName, bool is
 		this->baseTextureList.push_back(texture);
 	}
 	
+}
+
+void TextureManager::instantiateAsVideoFrame(String path, String assetName, int frameIndex)
+{
+	sf::Texture* texture = new sf::Texture();
+	texture->loadFromFile(path);
+	//this->textureMap[assetName].push_back(texture);
+
+	this->videoFrames.push_back(texture);
+	this->videoFrameMap[frameIndex] = texture;
+}
+
+sf::Texture* TextureManager::getVideoFrame(int index)
+{
+	return this->videoFrameMap[index];
+}
+
+int TextureManager::getFrameCount()
+{
+	return this->videoFrameMap.size();
+}
+
+int TextureManager::getTotalFrames()
+{
+	return this->totalFrames;
 }

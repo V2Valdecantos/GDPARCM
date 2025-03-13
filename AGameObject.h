@@ -23,6 +23,7 @@ class AGameObject: sf::NonCopyable, public Input
 		
 		virtual void setActive(bool active);
 		virtual sf::FloatRect getLocalBounds();
+		sf::FloatRect getGlobalBounds();
 		virtual sf::Vector2f getPosition();
 		virtual sf::Vector2f getScale();
 
