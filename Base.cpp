@@ -43,9 +43,10 @@ void Base::run()
     sf::Event event;
 	sf::Clock clock;
 	sf::Clock deltaClock;
-	sf::Clock iconClock;
 	sf::Time previousTime = clock.getElapsedTime();
 	sf::Time currentTime;
+	std::thread initThread(&Base::initThreads, this);
+	initThread.detach();
 
 	while (this->window->isOpen())
 	{
@@ -56,6 +57,7 @@ void Base::run()
 				window->close();
 		}
 
+	
 		//BG Scroll
 		sf::Vector2f pos = this->background->getPosition();
 		pos.y += 100000 * deltaClock.getElapsedTime().asSeconds();
@@ -67,17 +69,18 @@ void Base::run()
 		}
 
 		//Icons
-		std::cout << iconClock.getElapsedTime().asSeconds() << std::endl;
+		//std::cout << iconClock.getElapsedTime().asSeconds() << std::endl;
 
-		if (iconClock.getElapsedTime().asSeconds() > 0.2f)
-		{
-			if (this->iconIndex <= 479)
-			{
-				this->initializeIcons(this->iconIndex);
-				this->iconIndex++;
-				iconClock.restart();
-			}
-		}
+		//if (iconClock.getElapsedTime().asSeconds() > 0.2f)
+		//{
+		//	if (this->iconIndex <= 479)
+		//	{
+		//		//this->initializeIcons(this->iconIndex);
+
+		//		this->iconIndex++;
+		//		iconClock.restart();
+		//	}
+		//}
 
 		//Draw
 		window->clear(sf::Color::Black);
@@ -85,7 +88,8 @@ void Base::run()
 		window->draw(*this->background);
 		for (sf::Sprite* icon : this->icons)
 		{
-			window->draw(*icon);
+			if (icon != NULL)
+				window->draw(*icon);
 		}
 		window->draw(*this->fpsCounter);
 		window->display();
@@ -102,6 +106,8 @@ void Base::run()
 
 void Base::initializeIcons(int iconIndex)
 {
+	std::this_thread::sleep_for(std::chrono::milliseconds(1000 + iconIndex * 1000));
+
 	std::string name = "";
 
 	sf::Sprite* icon = new sf::Sprite();
@@ -139,4 +145,15 @@ void Base::initializeIcons(int iconIndex)
 	icon->setScale(0.75f, 0.75f);
 
 
+
+}
+
+void Base::initThreads()
+{
+	for (int i = 0; i < 478; i++)
+	{
+		std::this_thread::sleep_for(std::chrono::milliseconds(16));
+		std::thread iconThread(&Base::initializeIcons, this, i);
+		iconThread.detach();
+	}
 }

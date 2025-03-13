@@ -16,8 +16,11 @@ class Base
 		Base();
 		~Base();
 
-		void run();
+		
+		void run();		
 		void initializeIcons(int iconIndex);
+		void initThreads();
+
 
 	private:
 		sf::RenderWindow* window;
@@ -33,7 +36,7 @@ class Base
 		float width = 1920;
 		int iconIndex = 0;
 		int iconX, iconY;
-
+		bool canDraw = false;
 
 };
 
