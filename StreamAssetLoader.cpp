@@ -48,7 +48,7 @@ void StreamAssetLoader::onStartTask()
 	//simulate loading of very large file
 	std::random_device seeder;
 	std::mt19937 engine(seeder());
-	std::uniform_int_distribution<int> dist(1000, 4000);
+	std::uniform_int_distribution<int> dist(500, 1000);
 	IETThread::sleep(dist(engine));
 
 	std::vector<String> tokens = StringUtils::split(path, '/');

@@ -39,13 +39,12 @@ void VideoObject::updateFrame(sf::Time elapsedTime)
 
 		if (currentFrame >= TextureManager::getInstance()->getFrameCount() - 1) 
 		{
-			SFXManager::getInstance()->getSound(SFXType::VIDEO)->stop();
-			GameObjectManager::getInstance()->deleteObject(this);
+			currentFrame = 0;
+			//SFXManager::getInstance()->getSound(SFXType::VIDEO)->stop();
+			//GameObjectManager::getInstance()->deleteObject(this);
 		}
-		else
-		{
 			sf::Texture* texture = TextureManager::getInstance()->getVideoFrame(currentFrame);
 			this->sprite->setTexture(*texture);
-		}
+
 	}
 }

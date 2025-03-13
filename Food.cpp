@@ -4,6 +4,7 @@
 #include "StringUtils.h"
 
 #include "TextureManager.h"
+#include "GameObjectManager.h"
 
 Food::Food(String name) : AGameObject(name)
 {
@@ -66,6 +67,10 @@ void Food::update(sf::Time deltaTime)
 		this->sprite->rotate(this->speed * deltaTime.asSeconds());
 	}
 
+	if (this->posY >= WINDOW_HEIGHT + 400) 
+	{
+		GameObjectManager::getInstance()->deleteObject(this);
+	}
 }
 
 void Food::updateFrame(sf::Time elapsedTime)
