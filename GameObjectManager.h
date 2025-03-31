@@ -1,47 +1,85 @@
 #pragma once
-//singleton class
-/* Game object manager contains all of the declared game object classes and calls the update function
- */
+
 #include <unordered_map>
 #include <vector>
-#include <string>
-#include "AGameObject.h"
-#include <SFML/Graphics.hpp>
 
-typedef std::unordered_map<std::string, AGameObject*> HashTable;
-typedef std::vector<AGameObject*> List;
+#include "GameObject.h"
 
-class GameObjectManager
+namespace GDEngine
 {
+	class GameObjectManager
+	{
+	public:
+		typedef std::unordered_map<std::string, AGameObject*> GameObjectTable;
+		typedef std::vector<AGameObject*> GameObjectList;
+
+	private:
+		GameObjectTable m_gameObjectTable;
+		GameObjectList m_gameObjectList;
+		AGameObject* m_selectedObject;
+
+		std::vector<AGameObject*> m_selectedObjects;
+		std::vector<AGameObject*> m_viewables;
+
+		bool m_multiselectMode;
+
+	public:
+		void createCube();
+		void createPhysicsCube();
+		void createPhysicsPlane();
+		void createTexturedCube();
+		void createTexturedCapsule();
+		void createTexturedCylinder();
+		void createTexturedSphere();
+		void createPlane();
+		void createQuad();
+		void createTeapot();
+		void createBunny();
+		void createArmadillo();
+		void createLucy();
+
+		void update(float deltaTime);
+		void draw(int width, int height);
+
+		GameObjectList getAllObjects();
+		AGameObject* findObjectByName(std::string name);
+		void addObject(AGameObject* gameObject);
+		void deleteObject(AGameObject* gameObject);
+		void deleteObjectByName(std::string name);
+		void deleteAllObjects();
+		void setSelectedObject(std::string name);
+		void setSelectedObject(GUID guid);
+		void setSelectedObject(AGameObject* gameObject);
+		AGameObject* getSelectedObject();
+		std::vector<AGameObject*> getSelectedObjects();
+		bool isSelected(AGameObject* obj);
+		bool isViewable(AGameObject* obj);
+
+		void saveEditStates();
+		void restoreEditStates();
+		void applyAction(EditorAction* action);
+
+		void setPhysics(bool physics);
+		bool getMultiselectMode();
+		void setMultiselectMode(bool multiselect);
+
+		void setViewableObjects(std::vector<AGameObject*> viewables);
+
+		AGameObject* createObjectFromFile(std::string objectGuid, std::string objectName, std::string classType, Vector3D position, Vector3D rotation, Vector3D scale);
+		AGameObject* createObjectFromTextFile(std::string objectName, std::string classType, Vector3D position, Vector3D rotation, Vector3D scale, bool rb, int physType);
+
+	private:
+		static GameObjectManager* P_SHARED_INSTANCE;
+
+	private:
+		GameObjectManager();
+		~GameObjectManager();
+		GameObjectManager(const GameObjectManager&);
+		GameObjectManager& operator = (const GameObjectManager&);
+
 	public:
 		static GameObjectManager* getInstance();
-		AGameObject* findObjectByName(AGameObject::String name);
-		List getAllObjects();
-		int activeObjects();
-		void processInput(sf::Event event);
-		void update(sf::Time deltaTime);
-		void draw(sf::RenderWindow* window);
-		void addObject(AGameObject* gameObject);
-		void addObjectToScene(AGameObject* gameObject); //the scene loaded in the background
-		void deleteObject(AGameObject* gameObject);
-		void deleteObjectByName(AGameObject::String name);
-
-		void setLoadedVideo(bool loaded);
-		AGameObject* fpsCounter;
-		AGameObject* textureDisplay;
-		AGameObject* background;
-	private:
-		GameObjectManager() {};
-		GameObjectManager(GameObjectManager const&) {};             // copy constructor is private
-		GameObjectManager& operator=(GameObjectManager const&) {};  // assignment operator is private
-		static GameObjectManager* sharedInstance;
-
-		bool loaded = false;
-		float elapsed = 0;
-		HashTable gameObjectMap;
-		List gameObjectList;
-
-		HashTable loadedSceneObjectMap;
-		List loadedSceneObjects;
-};
-
+		static void initialize();
+		static void destroy();
+	};
+}

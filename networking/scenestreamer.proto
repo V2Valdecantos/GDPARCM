@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+// The scene streamer service definition.
+service SceneStreamer {
+	// Requests for a scene
+	rpc RequestScene (SceneIndex) returns (Scene) {}
+}
+
+// The request message containing the scene index.
+message SceneIndex {
+	int32 sceneid = 1;
+}
+
+// The response message containing the list of assets/models
+message Scene {
+
+	message Asset {
+		message Pos {
+			float x = 1;
+			float y = 2;
+			float z = 3;
+		};
+
+		message Scale {
+			float x = 1;
+			float y = 2;
+			float z = 3;
+		};
+
+		Pos pos = 1;			//Local position of the object
+		Scale scale = 2;		//Local scale of the object
+		string objdata = 3;		//.obj as plaintext
+	
+	}
+
+	repeated Asset assetlist = 1; // List of all assets/models in the scene
+}

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="GreeterServer.cpp" />
+    <ClCompile Include="GreeterClient.cpp" />
+    <ClCompile Include="IETThread.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="helloworld.grpc.pb.cc">
+      <Filter>Proto Files</Filter>
+    </ClCompile>
+    <ClCompile Include="helloworld.pb.cc">
+      <Filter>Proto Files</Filter>
+    </ClCompile>
+    <ClCompile Include="assetstreamer.grpc.pb.cc">
+      <Filter>Proto Files\Streaming</Filter>
+    </ClCompile>
+    <ClCompile Include="assetstreamer.pb.cc">
+      <Filter>Proto Files\Streaming</Filter>
+    </ClCompile>
+    <ClCompile Include="scenestreamer.grpc.pb.cc">
+      <Filter>Proto Files\Streaming</Filter>
+    </ClCompile>
+    <ClCompile Include="scenestreamer.pb.cc">
+      <Filter>Proto Files\Streaming</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Proto Files">
+      <UniqueIdentifier>{8f670ba5-4cfb-4930-9778-4a8d4afe5cb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Threading">
+      <UniqueIdentifier>{7b9c6dfb-80c6-4c03-b9fa-e67da5fd8486}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Proto Files\Streaming">
+      <UniqueIdentifier>{b8a41757-8ec8-41b4-aca5-f3c1bd0a3f0b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="helloworld.proto">
+      <Filter>Proto Files</Filter>
+    </None>
+    <None Include="proto_compile.sh">
+      <Filter>Proto Files</Filter>
+    </None>
+    <None Include="assetstreamer.proto">
+      <Filter>Proto Files</Filter>
+    </None>
+    <None Include="scenestreamer.proto">
+      <Filter>Proto Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GreeterServer.h" />
+    <ClInclude Include="GreeterClient.h" />
+    <ClInclude Include="IETThread.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="helloworld.grpc.pb.h">
+      <Filter>Proto Files</Filter>
+    </ClInclude>
+    <ClInclude Include="helloworld.pb.h">
+      <Filter>Proto Files</Filter>
+    </ClInclude>
+    <ClInclude Include="assetstreamer.grpc.pb.h">
+      <Filter>Proto Files\Streaming</Filter>
+    </ClInclude>
+    <ClInclude Include="assetstreamer.pb.h">
+      <Filter>Proto Files\Streaming</Filter>
+    </ClInclude>
+    <ClInclude Include="scenestreamer.grpc.pb.h">
+      <Filter>Proto Files\Streaming</Filter>
+    </ClInclude>
+    <ClInclude Include="scenestreamer.pb.h">
+      <Filter>Proto Files\Streaming</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
