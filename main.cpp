@@ -1,15 +1,15 @@
-#include "AppWindow.h"
+#include "SceneServer.h"
 
 int main()
 {
-	AppWindow::initialize();
-	AppWindow* runningApp = (AppWindow*)AppWindow::getInstance();
-	//runningApp->initializeEngine();
 
-	while(runningApp->isRunning())
-	{
-		runningApp->broadcast();
-	}
+    //run the server
+    SceneStreamerServer server;
+    server.start();
 
-	return 0;
+    //wait for server to startup
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    while (server.isRunning) {} //wait for shutdown
+  
+
 }

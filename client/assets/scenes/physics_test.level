@@ -1,0 +1,653 @@
+{
+   "{0500021a-b166-4be6-bac9-1569ca0a3542}" : {
+      "components" : {
+         "{ae22dcf9-c3e2-4df2-9026-1bf1d6ebc485}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 8",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 8",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{21bb31ec-b083-4da3-9657-15c05494eefb}" : {
+      "components" : {
+         "{2a430fb2-4b7c-4a0b-b4a7-7aa1fc9e358f}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 6",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 6",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{22bb33df-8cc3-48ae-ae7f-d5d005e92f31}" : {
+      "components" : {
+         "{794a6ada-6ea8-46a3-bc63-c0680a33d23d}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 4",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 4",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{3793433f-ad03-4d12-a96e-07f12baf291e}" : {
+      "components" : {
+         "{e3ebc582-a5e6-4577-8c57-8978d6422242}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{46283e48-a885-4ba8-9108-54cca1684788}" : {
+      "components" : {
+         "{aab2af7d-d2b1-4483-86c0-54caa9b6c515}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 18",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 18",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{4f128ee7-3a8d-4e74-8937-2a76736d2efe}" : {
+      "components" : {
+         "{dced0a77-ab48-408a-9750-b34cbea58264}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 17",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 17",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{4f410fd0-2ecd-4064-9446-3559c9814885}" : {
+      "components" : {
+         "{39798812-1636-43c4-b520-27c47bf24c80}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 15",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 15",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{56201e91-f22c-4653-9165-b92efa869274}" : {
+      "components" : {
+         "{a8c22912-0987-4fd3-b7ca-f992a244d2e5}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 1,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Plane",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Plane",
+      "position" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 64.0,
+         "y" : 0.5,
+         "z" : 64.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{5fc70034-fd2f-4864-a0bd-4a15a5c524b4}" : {
+      "components" : {
+         "{9756ec12-bc63-4a54-bbf6-ec3e0acb8f80}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 7",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 7",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{7b60a9d2-d8c1-4c38-9767-af4b62b91611}" : {
+      "components" : {
+         "{1f0dd6fb-544c-4f82-b465-0eabad828fbc}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 10",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 10",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{7fdc0127-ca24-41f7-85e1-4bd71f6adefc}" : {
+      "components" : {
+         "{55d9c6e2-8777-4f86-bcba-3a9acb489282}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 2",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 2",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{ab016a46-b744-4669-a122-46ae96f0e51d}" : {
+      "components" : {
+         "{d828b3e4-23d2-4df8-86e5-6ff1f9108f5e}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 1",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 1",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{aba219d1-aa36-4fd8-b884-bbf642218745}" : {
+      "components" : {
+         "{37445226-cc50-4856-ade1-fd277765f4fd}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 16",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 16",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{aff04782-9f40-4c2f-a854-f813af854ec8}" : {
+      "components" : {
+         "{900a16cf-a09a-4007-8d1f-206c6e849f27}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 12",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 12",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{b6a21f92-65e9-4463-973c-6e8ae543242c}" : {
+      "components" : {
+         "{8361772b-6758-4d26-b931-267a1929a17c}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 11",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 11",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{ba6e3d85-8f0a-4563-a78c-468be1f33599}" : {
+      "components" : {
+         "{707b39b5-3f59-455b-8411-e11182c9600d}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 13",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 13",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{be6162e2-519a-495a-a316-a47a38c606c1}" : {
+      "components" : {
+         "{afe0c6cc-302f-415b-a88b-c3f6bbe2971a}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 19",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 19",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{c3d99642-4315-4779-9e83-bc303d561c63}" : {
+      "components" : {
+         "{65a83b8b-20e6-4123-a919-0f6520ec6495}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 14",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 14",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{ca867e1f-19d5-4369-81db-3d6eda5a309f}" : {
+      "components" : {
+         "{231f7f6e-582d-45e2-9094-b444130ac434}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 5",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 5",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{dcbba9f4-5f03-4d15-a326-1dd7e936f339}" : {
+      "components" : {
+         "{3eef4449-83ae-471d-9b45-0569a9133874}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 3",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 3",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   },
+   "{dd46443f-e30a-4931-9703-96292f39e8b7}" : {
+      "components" : {
+         "{f7b9337f-052d-48fc-86de-80b529f718cd}" : {
+            "angular_drag" : 0.0,
+            "body_type" : 2,
+            "class" : ".?AVPhysicsComponent@GDEngine@@",
+            "gravity" : true,
+            "linear_drag" : 0.0,
+            "mass" : 1000.0,
+            "name" : "PhysicsComponent Physics Cube 9",
+            "type" : 3
+         }
+      },
+      "name" : "Physics Cube 9",
+      "position" : {
+         "x" : 0.0,
+         "y" : 5.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   }
+}

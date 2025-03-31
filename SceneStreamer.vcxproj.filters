@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Networking Files">
+      <UniqueIdentifier>{52be030d-868c-4b33-b530-4c5dc7151963}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Networking Files\proto">
+      <UniqueIdentifier>{7525a895-9416-4ee7-a4c2-89d1658f4c11}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="assetstreamer.grpc.pb.cc">
+      <Filter>Networking Files\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="assetstreamer.pb.cc">
+      <Filter>Networking Files\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="scenestreamer.grpc.pb.cc">
+      <Filter>Networking Files\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="scenestreamer.pb.cc">
+      <Filter>Networking Files\proto</Filter>
+    </ClCompile>
+    <ClCompile Include="IETThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assetstreamer.proto">
+      <Filter>Networking Files\proto</Filter>
+    </None>
+    <None Include="networking\proto_compile.sh">
+      <Filter>Networking Files\proto</Filter>
+    </None>
+    <None Include="scenestreamer.proto">
+      <Filter>Networking Files\proto</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="assetstreamer.grpc.pb.h">
+      <Filter>Networking Files\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="assetstreamer.pb.h">
+      <Filter>Networking Files\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="scenestreamer.grpc.pb.h">
+      <Filter>Networking Files\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="scenestreamer.pb.h">
+      <Filter>Networking Files\proto</Filter>
+    </ClInclude>
+    <ClInclude Include="IETThread.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneServer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

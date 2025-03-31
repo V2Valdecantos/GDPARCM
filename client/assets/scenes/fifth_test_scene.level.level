@@ -1,0 +1,29 @@
+{
+   "{7b8954b8-8d4d-45f8-9b17-5ca76c70147f}" : {
+      "components" : {
+         "{ac48a003-1672-4695-8d87-a7eb42278e13}" : {
+            "class" : ".?AVMeshRenderer@GDEngine@@",
+            "file_path" : "C:\\Users\\shane\\source\\repos\\GDENG03-Engine-Features-Replication\\assets\\meshes\\teapot.obj",
+            "name" : "MeshRenderer Cube",
+            "type" : 1
+         }
+      },
+      "name" : "Cube",
+      "position" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "rotation" : {
+         "x" : 0.0,
+         "y" : 0.0,
+         "z" : 0.0
+      },
+      "scale" : {
+         "x" : 1.0,
+         "y" : 1.0,
+         "z" : 1.0
+      },
+      "type" : ".?AVCube@GDEngine@@"
+   }
+}
