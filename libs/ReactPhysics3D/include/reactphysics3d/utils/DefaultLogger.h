@@ -28,8 +28,6 @@
 
 // Libraries
 #include <reactphysics3d/utils/Logger.h>
-#include <reactphysics3d/containers/Array.h>
-#include <reactphysics3d/containers/Map.h>
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -37,6 +35,7 @@
 #include <iomanip>
 #include <mutex>
 #include <ctime>
+#include <chrono>
 
 /// ReactPhysics3D namespace
 namespace reactphysics3d {

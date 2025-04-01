@@ -50,92 +50,14 @@ struct SceneIndexDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SceneIndexDefaultTypeInternal _SceneIndex_default_instance_;
 
-inline constexpr Scene_Asset_Scale::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : x_{0},
-        y_{0},
-        z_{0},
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR Scene_Asset_Scale::Scene_Asset_Scale(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct Scene_Asset_ScaleDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Scene_Asset_ScaleDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~Scene_Asset_ScaleDefaultTypeInternal() {}
-  union {
-    Scene_Asset_Scale _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Scene_Asset_ScaleDefaultTypeInternal _Scene_Asset_Scale_default_instance_;
-
-inline constexpr Scene_Asset_Pos::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : x_{0},
-        y_{0},
-        z_{0},
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR Scene_Asset_Pos::Scene_Asset_Pos(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct Scene_Asset_PosDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Scene_Asset_PosDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~Scene_Asset_PosDefaultTypeInternal() {}
-  union {
-    Scene_Asset_Pos _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Scene_Asset_PosDefaultTypeInternal _Scene_Asset_Pos_default_instance_;
-
-inline constexpr Scene_Asset::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : _cached_size_{0},
-        objdata_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        pos_{nullptr},
-        scale_{nullptr} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR Scene_Asset::Scene_Asset(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct Scene_AssetDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR Scene_AssetDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~Scene_AssetDefaultTypeInternal() {}
-  union {
-    Scene_Asset _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 Scene_AssetDefaultTypeInternal _Scene_Asset_default_instance_;
-
 inline constexpr Scene::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : assetlist_{},
+      : asset1_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        asset2_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
         _cached_size_{0} {}
 
 template <typename>
@@ -174,42 +96,6 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::SceneIndex, _impl_.sceneid_),
         ~0u,  // no _has_bits_
-        PROTOBUF_FIELD_OFFSET(::Scene_Asset_Pos, _internal_metadata_),
-        ~0u,  // no _extensions_
-        ~0u,  // no _oneof_case_
-        ~0u,  // no _weak_field_map_
-        ~0u,  // no _inlined_string_donated_
-        ~0u,  // no _split_
-        ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::Scene_Asset_Pos, _impl_.x_),
-        PROTOBUF_FIELD_OFFSET(::Scene_Asset_Pos, _impl_.y_),
-        PROTOBUF_FIELD_OFFSET(::Scene_Asset_Pos, _impl_.z_),
-        ~0u,  // no _has_bits_
-        PROTOBUF_FIELD_OFFSET(::Scene_Asset_Scale, _internal_metadata_),
-        ~0u,  // no _extensions_
-        ~0u,  // no _oneof_case_
-        ~0u,  // no _weak_field_map_
-        ~0u,  // no _inlined_string_donated_
-        ~0u,  // no _split_
-        ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::Scene_Asset_Scale, _impl_.x_),
-        PROTOBUF_FIELD_OFFSET(::Scene_Asset_Scale, _impl_.y_),
-        PROTOBUF_FIELD_OFFSET(::Scene_Asset_Scale, _impl_.z_),
-        PROTOBUF_FIELD_OFFSET(::Scene_Asset, _impl_._has_bits_),
-        PROTOBUF_FIELD_OFFSET(::Scene_Asset, _internal_metadata_),
-        ~0u,  // no _extensions_
-        ~0u,  // no _oneof_case_
-        ~0u,  // no _weak_field_map_
-        ~0u,  // no _inlined_string_donated_
-        ~0u,  // no _split_
-        ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::Scene_Asset, _impl_.pos_),
-        PROTOBUF_FIELD_OFFSET(::Scene_Asset, _impl_.scale_),
-        PROTOBUF_FIELD_OFFSET(::Scene_Asset, _impl_.objdata_),
-        0,
-        1,
-        ~0u,
-        ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::Scene, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -217,47 +103,37 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
-        PROTOBUF_FIELD_OFFSET(::Scene, _impl_.assetlist_),
+        PROTOBUF_FIELD_OFFSET(::Scene, _impl_.asset1_),
+        PROTOBUF_FIELD_OFFSET(::Scene, _impl_.asset2_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::SceneIndex)},
-        {9, -1, -1, sizeof(::Scene_Asset_Pos)},
-        {20, -1, -1, sizeof(::Scene_Asset_Scale)},
-        {31, 42, -1, sizeof(::Scene_Asset)},
-        {45, -1, -1, sizeof(::Scene)},
+        {9, -1, -1, sizeof(::Scene)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::_SceneIndex_default_instance_._instance,
-    &::_Scene_Asset_Pos_default_instance_._instance,
-    &::_Scene_Asset_Scale_default_instance_._instance,
-    &::_Scene_Asset_default_instance_._instance,
     &::_Scene_default_instance_._instance,
 };
 const char descriptor_table_protodef_scenestreamer_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\023scenestreamer.proto\"\035\n\nSceneIndex\022\017\n\007s"
-    "ceneid\030\001 \001(\005\"\327\001\n\005Scene\022\037\n\tassetlist\030\001 \003("
-    "\0132\014.Scene.Asset\032\254\001\n\005Asset\022\035\n\003pos\030\001 \001(\0132\020"
-    ".Scene.Asset.Pos\022!\n\005scale\030\002 \001(\0132\022.Scene."
-    "Asset.Scale\022\017\n\007objdata\030\003 \001(\t\032&\n\003Pos\022\t\n\001x"
-    "\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\002\032(\n\005Scale\022\t\n"
-    "\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\022\t\n\001z\030\003 \001(\00226\n\rSceneS"
-    "treamer\022%\n\014RequestScene\022\013.SceneIndex\032\006.S"
-    "cene\"\000b\006proto3"
+    "ceneid\030\001 \001(\005\"\'\n\005Scene\022\016\n\006asset1\030\001 \001(\014\022\016\n"
+    "\006asset2\030\002 \001(\01428\n\rSceneStreamer\022\'\n\014Reques"
+    "tScene\022\013.SceneIndex\032\006.Scene\"\0000\001b\006proto3"
 };
 static ::absl::once_flag descriptor_table_scenestreamer_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_scenestreamer_2eproto = {
     false,
     false,
-    334,
+    159,
     descriptor_table_protodef_scenestreamer_2eproto,
     "scenestreamer.proto",
     &descriptor_table_scenestreamer_2eproto_once,
     nullptr,
     0,
-    5,
+    2,
     schemas,
     file_default_instances,
     TableStruct_scenestreamer_2eproto::offsets,
@@ -473,862 +349,6 @@ void SceneIndex::InternalSwap(SceneIndex* PROTOBUF_RESTRICT other) {
 }
 // ===================================================================
 
-class Scene_Asset_Pos::_Internal {
- public:
-};
-
-Scene_Asset_Pos::Scene_Asset_Pos(::google::protobuf::Arena* arena)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:Scene.Asset.Pos)
-}
-Scene_Asset_Pos::Scene_Asset_Pos(
-    ::google::protobuf::Arena* arena, const Scene_Asset_Pos& from)
-    : Scene_Asset_Pos(arena) {
-  MergeFrom(from);
-}
-inline PROTOBUF_NDEBUG_INLINE Scene_Asset_Pos::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
-
-inline void Scene_Asset_Pos::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, x_),
-           0,
-           offsetof(Impl_, z_) -
-               offsetof(Impl_, x_) +
-               sizeof(Impl_::z_));
-}
-Scene_Asset_Pos::~Scene_Asset_Pos() {
-  // @@protoc_insertion_point(destructor:Scene.Asset.Pos)
-  SharedDtor(*this);
-}
-inline void Scene_Asset_Pos::SharedDtor(MessageLite& self) {
-  Scene_Asset_Pos& this_ = static_cast<Scene_Asset_Pos&>(self);
-  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  ABSL_DCHECK(this_.GetArena() == nullptr);
-  this_._impl_.~Impl_();
-}
-
-inline void* Scene_Asset_Pos::PlacementNew_(const void*, void* mem,
-                                        ::google::protobuf::Arena* arena) {
-  return ::new (mem) Scene_Asset_Pos(arena);
-}
-constexpr auto Scene_Asset_Pos::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(Scene_Asset_Pos),
-                                            alignof(Scene_Asset_Pos));
-}
-PROTOBUF_CONSTINIT
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::google::protobuf::internal::ClassDataFull Scene_Asset_Pos::_class_data_ = {
-    ::google::protobuf::internal::ClassData{
-        &_Scene_Asset_Pos_default_instance_._instance,
-        &_table_.header,
-        nullptr,  // OnDemandRegisterArenaDtor
-        nullptr,  // IsInitialized
-        &Scene_Asset_Pos::MergeImpl,
-        ::google::protobuf::Message::GetNewImpl<Scene_Asset_Pos>(),
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        &Scene_Asset_Pos::SharedDtor,
-        ::google::protobuf::Message::GetClearImpl<Scene_Asset_Pos>(), &Scene_Asset_Pos::ByteSizeLong,
-            &Scene_Asset_Pos::_InternalSerialize,
-#endif  // PROTOBUF_CUSTOM_VTABLE
-        PROTOBUF_FIELD_OFFSET(Scene_Asset_Pos, _impl_._cached_size_),
-        false,
-    },
-    &Scene_Asset_Pos::kDescriptorMethods,
-    &descriptor_table_scenestreamer_2eproto,
-    nullptr,  // tracker
-};
-const ::google::protobuf::internal::ClassData* Scene_Asset_Pos::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
-  return _class_data_.base();
-}
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 0, 0, 2> Scene_Asset_Pos::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    _class_data_.base(),
-    nullptr,  // post_loop_handler
-    ::_pbi::TcParser::GenericFallback,  // fallback
-    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::Scene_Asset_Pos>(),  // to_prefetch
-    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // float x = 1;
-    {::_pbi::TcParser::FastF32S1,
-     {13, 63, 0, PROTOBUF_FIELD_OFFSET(Scene_Asset_Pos, _impl_.x_)}},
-    // float y = 2;
-    {::_pbi::TcParser::FastF32S1,
-     {21, 63, 0, PROTOBUF_FIELD_OFFSET(Scene_Asset_Pos, _impl_.y_)}},
-    // float z = 3;
-    {::_pbi::TcParser::FastF32S1,
-     {29, 63, 0, PROTOBUF_FIELD_OFFSET(Scene_Asset_Pos, _impl_.z_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // float x = 1;
-    {PROTOBUF_FIELD_OFFSET(Scene_Asset_Pos, _impl_.x_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float y = 2;
-    {PROTOBUF_FIELD_OFFSET(Scene_Asset_Pos, _impl_.y_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float z = 3;
-    {PROTOBUF_FIELD_OFFSET(Scene_Asset_Pos, _impl_.z_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-  }},
-  // no aux_entries
-  {{
-  }},
-};
-
-PROTOBUF_NOINLINE void Scene_Asset_Pos::Clear() {
-// @@protoc_insertion_point(message_clear_start:Scene.Asset.Pos)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  ::memset(&_impl_.x_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.z_) -
-      reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.z_));
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
-}
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::uint8_t* Scene_Asset_Pos::_InternalSerialize(
-            const MessageLite& base, ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) {
-          const Scene_Asset_Pos& this_ = static_cast<const Scene_Asset_Pos&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::uint8_t* Scene_Asset_Pos::_InternalSerialize(
-            ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-          const Scene_Asset_Pos& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(serialize_to_array_start:Scene.Asset.Pos)
-          ::uint32_t cached_has_bits = 0;
-          (void)cached_has_bits;
-
-          // float x = 1;
-          if (::absl::bit_cast<::uint32_t>(this_._internal_x()) != 0) {
-            target = stream->EnsureSpace(target);
-            target = ::_pbi::WireFormatLite::WriteFloatToArray(
-                1, this_._internal_x(), target);
-          }
-
-          // float y = 2;
-          if (::absl::bit_cast<::uint32_t>(this_._internal_y()) != 0) {
-            target = stream->EnsureSpace(target);
-            target = ::_pbi::WireFormatLite::WriteFloatToArray(
-                2, this_._internal_y(), target);
-          }
-
-          // float z = 3;
-          if (::absl::bit_cast<::uint32_t>(this_._internal_z()) != 0) {
-            target = stream->EnsureSpace(target);
-            target = ::_pbi::WireFormatLite::WriteFloatToArray(
-                3, this_._internal_z(), target);
-          }
-
-          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
-            target =
-                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
-          }
-          // @@protoc_insertion_point(serialize_to_array_end:Scene.Asset.Pos)
-          return target;
-        }
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::size_t Scene_Asset_Pos::ByteSizeLong(const MessageLite& base) {
-          const Scene_Asset_Pos& this_ = static_cast<const Scene_Asset_Pos&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::size_t Scene_Asset_Pos::ByteSizeLong() const {
-          const Scene_Asset_Pos& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(message_byte_size_start:Scene.Asset.Pos)
-          ::size_t total_size = 0;
-
-          ::uint32_t cached_has_bits = 0;
-          // Prevent compiler warnings about cached_has_bits being unused
-          (void)cached_has_bits;
-
-          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
-           {
-            // float x = 1;
-            if (::absl::bit_cast<::uint32_t>(this_._internal_x()) != 0) {
-              total_size += 5;
-            }
-            // float y = 2;
-            if (::absl::bit_cast<::uint32_t>(this_._internal_y()) != 0) {
-              total_size += 5;
-            }
-            // float z = 3;
-            if (::absl::bit_cast<::uint32_t>(this_._internal_z()) != 0) {
-              total_size += 5;
-            }
-          }
-          return this_.MaybeComputeUnknownFieldsSize(total_size,
-                                                     &this_._impl_._cached_size_);
-        }
-
-void Scene_Asset_Pos::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
-  auto* const _this = static_cast<Scene_Asset_Pos*>(&to_msg);
-  auto& from = static_cast<const Scene_Asset_Pos&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:Scene.Asset.Pos)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (::absl::bit_cast<::uint32_t>(from._internal_x()) != 0) {
-    _this->_impl_.x_ = from._impl_.x_;
-  }
-  if (::absl::bit_cast<::uint32_t>(from._internal_y()) != 0) {
-    _this->_impl_.y_ = from._impl_.y_;
-  }
-  if (::absl::bit_cast<::uint32_t>(from._internal_z()) != 0) {
-    _this->_impl_.z_ = from._impl_.z_;
-  }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void Scene_Asset_Pos::CopyFrom(const Scene_Asset_Pos& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Scene.Asset.Pos)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-
-void Scene_Asset_Pos::InternalSwap(Scene_Asset_Pos* PROTOBUF_RESTRICT other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Scene_Asset_Pos, _impl_.z_)
-      + sizeof(Scene_Asset_Pos::_impl_.z_)
-      - PROTOBUF_FIELD_OFFSET(Scene_Asset_Pos, _impl_.x_)>(
-          reinterpret_cast<char*>(&_impl_.x_),
-          reinterpret_cast<char*>(&other->_impl_.x_));
-}
-
-::google::protobuf::Metadata Scene_Asset_Pos::GetMetadata() const {
-  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
-}
-// ===================================================================
-
-class Scene_Asset_Scale::_Internal {
- public:
-};
-
-Scene_Asset_Scale::Scene_Asset_Scale(::google::protobuf::Arena* arena)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:Scene.Asset.Scale)
-}
-Scene_Asset_Scale::Scene_Asset_Scale(
-    ::google::protobuf::Arena* arena, const Scene_Asset_Scale& from)
-    : Scene_Asset_Scale(arena) {
-  MergeFrom(from);
-}
-inline PROTOBUF_NDEBUG_INLINE Scene_Asset_Scale::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
-
-inline void Scene_Asset_Scale::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, x_),
-           0,
-           offsetof(Impl_, z_) -
-               offsetof(Impl_, x_) +
-               sizeof(Impl_::z_));
-}
-Scene_Asset_Scale::~Scene_Asset_Scale() {
-  // @@protoc_insertion_point(destructor:Scene.Asset.Scale)
-  SharedDtor(*this);
-}
-inline void Scene_Asset_Scale::SharedDtor(MessageLite& self) {
-  Scene_Asset_Scale& this_ = static_cast<Scene_Asset_Scale&>(self);
-  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  ABSL_DCHECK(this_.GetArena() == nullptr);
-  this_._impl_.~Impl_();
-}
-
-inline void* Scene_Asset_Scale::PlacementNew_(const void*, void* mem,
-                                        ::google::protobuf::Arena* arena) {
-  return ::new (mem) Scene_Asset_Scale(arena);
-}
-constexpr auto Scene_Asset_Scale::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(Scene_Asset_Scale),
-                                            alignof(Scene_Asset_Scale));
-}
-PROTOBUF_CONSTINIT
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::google::protobuf::internal::ClassDataFull Scene_Asset_Scale::_class_data_ = {
-    ::google::protobuf::internal::ClassData{
-        &_Scene_Asset_Scale_default_instance_._instance,
-        &_table_.header,
-        nullptr,  // OnDemandRegisterArenaDtor
-        nullptr,  // IsInitialized
-        &Scene_Asset_Scale::MergeImpl,
-        ::google::protobuf::Message::GetNewImpl<Scene_Asset_Scale>(),
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        &Scene_Asset_Scale::SharedDtor,
-        ::google::protobuf::Message::GetClearImpl<Scene_Asset_Scale>(), &Scene_Asset_Scale::ByteSizeLong,
-            &Scene_Asset_Scale::_InternalSerialize,
-#endif  // PROTOBUF_CUSTOM_VTABLE
-        PROTOBUF_FIELD_OFFSET(Scene_Asset_Scale, _impl_._cached_size_),
-        false,
-    },
-    &Scene_Asset_Scale::kDescriptorMethods,
-    &descriptor_table_scenestreamer_2eproto,
-    nullptr,  // tracker
-};
-const ::google::protobuf::internal::ClassData* Scene_Asset_Scale::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
-  return _class_data_.base();
-}
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 0, 0, 2> Scene_Asset_Scale::_table_ = {
-  {
-    0,  // no _has_bits_
-    0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
-    _class_data_.base(),
-    nullptr,  // post_loop_handler
-    ::_pbi::TcParser::GenericFallback,  // fallback
-    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::Scene_Asset_Scale>(),  // to_prefetch
-    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // float x = 1;
-    {::_pbi::TcParser::FastF32S1,
-     {13, 63, 0, PROTOBUF_FIELD_OFFSET(Scene_Asset_Scale, _impl_.x_)}},
-    // float y = 2;
-    {::_pbi::TcParser::FastF32S1,
-     {21, 63, 0, PROTOBUF_FIELD_OFFSET(Scene_Asset_Scale, _impl_.y_)}},
-    // float z = 3;
-    {::_pbi::TcParser::FastF32S1,
-     {29, 63, 0, PROTOBUF_FIELD_OFFSET(Scene_Asset_Scale, _impl_.z_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // float x = 1;
-    {PROTOBUF_FIELD_OFFSET(Scene_Asset_Scale, _impl_.x_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float y = 2;
-    {PROTOBUF_FIELD_OFFSET(Scene_Asset_Scale, _impl_.y_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-    // float z = 3;
-    {PROTOBUF_FIELD_OFFSET(Scene_Asset_Scale, _impl_.z_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
-  }},
-  // no aux_entries
-  {{
-  }},
-};
-
-PROTOBUF_NOINLINE void Scene_Asset_Scale::Clear() {
-// @@protoc_insertion_point(message_clear_start:Scene.Asset.Scale)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  ::memset(&_impl_.x_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.z_) -
-      reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.z_));
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
-}
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::uint8_t* Scene_Asset_Scale::_InternalSerialize(
-            const MessageLite& base, ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) {
-          const Scene_Asset_Scale& this_ = static_cast<const Scene_Asset_Scale&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::uint8_t* Scene_Asset_Scale::_InternalSerialize(
-            ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-          const Scene_Asset_Scale& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(serialize_to_array_start:Scene.Asset.Scale)
-          ::uint32_t cached_has_bits = 0;
-          (void)cached_has_bits;
-
-          // float x = 1;
-          if (::absl::bit_cast<::uint32_t>(this_._internal_x()) != 0) {
-            target = stream->EnsureSpace(target);
-            target = ::_pbi::WireFormatLite::WriteFloatToArray(
-                1, this_._internal_x(), target);
-          }
-
-          // float y = 2;
-          if (::absl::bit_cast<::uint32_t>(this_._internal_y()) != 0) {
-            target = stream->EnsureSpace(target);
-            target = ::_pbi::WireFormatLite::WriteFloatToArray(
-                2, this_._internal_y(), target);
-          }
-
-          // float z = 3;
-          if (::absl::bit_cast<::uint32_t>(this_._internal_z()) != 0) {
-            target = stream->EnsureSpace(target);
-            target = ::_pbi::WireFormatLite::WriteFloatToArray(
-                3, this_._internal_z(), target);
-          }
-
-          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
-            target =
-                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
-          }
-          // @@protoc_insertion_point(serialize_to_array_end:Scene.Asset.Scale)
-          return target;
-        }
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::size_t Scene_Asset_Scale::ByteSizeLong(const MessageLite& base) {
-          const Scene_Asset_Scale& this_ = static_cast<const Scene_Asset_Scale&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::size_t Scene_Asset_Scale::ByteSizeLong() const {
-          const Scene_Asset_Scale& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(message_byte_size_start:Scene.Asset.Scale)
-          ::size_t total_size = 0;
-
-          ::uint32_t cached_has_bits = 0;
-          // Prevent compiler warnings about cached_has_bits being unused
-          (void)cached_has_bits;
-
-          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
-           {
-            // float x = 1;
-            if (::absl::bit_cast<::uint32_t>(this_._internal_x()) != 0) {
-              total_size += 5;
-            }
-            // float y = 2;
-            if (::absl::bit_cast<::uint32_t>(this_._internal_y()) != 0) {
-              total_size += 5;
-            }
-            // float z = 3;
-            if (::absl::bit_cast<::uint32_t>(this_._internal_z()) != 0) {
-              total_size += 5;
-            }
-          }
-          return this_.MaybeComputeUnknownFieldsSize(total_size,
-                                                     &this_._impl_._cached_size_);
-        }
-
-void Scene_Asset_Scale::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
-  auto* const _this = static_cast<Scene_Asset_Scale*>(&to_msg);
-  auto& from = static_cast<const Scene_Asset_Scale&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:Scene.Asset.Scale)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (::absl::bit_cast<::uint32_t>(from._internal_x()) != 0) {
-    _this->_impl_.x_ = from._impl_.x_;
-  }
-  if (::absl::bit_cast<::uint32_t>(from._internal_y()) != 0) {
-    _this->_impl_.y_ = from._impl_.y_;
-  }
-  if (::absl::bit_cast<::uint32_t>(from._internal_z()) != 0) {
-    _this->_impl_.z_ = from._impl_.z_;
-  }
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void Scene_Asset_Scale::CopyFrom(const Scene_Asset_Scale& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Scene.Asset.Scale)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-
-void Scene_Asset_Scale::InternalSwap(Scene_Asset_Scale* PROTOBUF_RESTRICT other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Scene_Asset_Scale, _impl_.z_)
-      + sizeof(Scene_Asset_Scale::_impl_.z_)
-      - PROTOBUF_FIELD_OFFSET(Scene_Asset_Scale, _impl_.x_)>(
-          reinterpret_cast<char*>(&_impl_.x_),
-          reinterpret_cast<char*>(&other->_impl_.x_));
-}
-
-::google::protobuf::Metadata Scene_Asset_Scale::GetMetadata() const {
-  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
-}
-// ===================================================================
-
-class Scene_Asset::_Internal {
- public:
-  using HasBits =
-      decltype(std::declval<Scene_Asset>()._impl_._has_bits_);
-  static constexpr ::int32_t kHasBitsOffset =
-      8 * PROTOBUF_FIELD_OFFSET(Scene_Asset, _impl_._has_bits_);
-};
-
-Scene_Asset::Scene_Asset(::google::protobuf::Arena* arena)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:Scene.Asset)
-}
-inline PROTOBUF_NDEBUG_INLINE Scene_Asset::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from, const ::Scene_Asset& from_msg)
-      : _has_bits_{from._has_bits_},
-        _cached_size_{0},
-        objdata_(arena, from.objdata_) {}
-
-Scene_Asset::Scene_Asset(
-    ::google::protobuf::Arena* arena,
-    const Scene_Asset& from)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(arena, _class_data_.base()) {
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(arena) {
-#endif  // PROTOBUF_CUSTOM_VTABLE
-  Scene_Asset* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
-  _impl_.pos_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::Scene_Asset_Pos>(
-                              arena, *from._impl_.pos_)
-                        : nullptr;
-  _impl_.scale_ = (cached_has_bits & 0x00000002u) ? ::google::protobuf::Message::CopyConstruct<::Scene_Asset_Scale>(
-                              arena, *from._impl_.scale_)
-                        : nullptr;
-
-  // @@protoc_insertion_point(copy_constructor:Scene.Asset)
-}
-inline PROTOBUF_NDEBUG_INLINE Scene_Asset::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility,
-    ::google::protobuf::Arena* arena)
-      : _cached_size_{0},
-        objdata_(arena) {}
-
-inline void Scene_Asset::SharedCtor(::_pb::Arena* arena) {
-  new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, pos_),
-           0,
-           offsetof(Impl_, scale_) -
-               offsetof(Impl_, pos_) +
-               sizeof(Impl_::scale_));
-}
-Scene_Asset::~Scene_Asset() {
-  // @@protoc_insertion_point(destructor:Scene.Asset)
-  SharedDtor(*this);
-}
-inline void Scene_Asset::SharedDtor(MessageLite& self) {
-  Scene_Asset& this_ = static_cast<Scene_Asset&>(self);
-  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
-  ABSL_DCHECK(this_.GetArena() == nullptr);
-  this_._impl_.objdata_.Destroy();
-  delete this_._impl_.pos_;
-  delete this_._impl_.scale_;
-  this_._impl_.~Impl_();
-}
-
-inline void* Scene_Asset::PlacementNew_(const void*, void* mem,
-                                        ::google::protobuf::Arena* arena) {
-  return ::new (mem) Scene_Asset(arena);
-}
-constexpr auto Scene_Asset::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(Scene_Asset),
-                                            alignof(Scene_Asset));
-}
-PROTOBUF_CONSTINIT
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::google::protobuf::internal::ClassDataFull Scene_Asset::_class_data_ = {
-    ::google::protobuf::internal::ClassData{
-        &_Scene_Asset_default_instance_._instance,
-        &_table_.header,
-        nullptr,  // OnDemandRegisterArenaDtor
-        nullptr,  // IsInitialized
-        &Scene_Asset::MergeImpl,
-        ::google::protobuf::Message::GetNewImpl<Scene_Asset>(),
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        &Scene_Asset::SharedDtor,
-        ::google::protobuf::Message::GetClearImpl<Scene_Asset>(), &Scene_Asset::ByteSizeLong,
-            &Scene_Asset::_InternalSerialize,
-#endif  // PROTOBUF_CUSTOM_VTABLE
-        PROTOBUF_FIELD_OFFSET(Scene_Asset, _impl_._cached_size_),
-        false,
-    },
-    &Scene_Asset::kDescriptorMethods,
-    &descriptor_table_scenestreamer_2eproto,
-    nullptr,  // tracker
-};
-const ::google::protobuf::internal::ClassData* Scene_Asset::GetClassData() const {
-  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
-  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
-  return _class_data_.base();
-}
-PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 2, 27, 2> Scene_Asset::_table_ = {
-  {
-    PROTOBUF_FIELD_OFFSET(Scene_Asset, _impl_._has_bits_),
-    0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
-    offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
-    offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    2,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
-    _class_data_.base(),
-    nullptr,  // post_loop_handler
-    ::_pbi::TcParser::GenericFallback,  // fallback
-    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
-    ::_pbi::TcParser::GetTable<::Scene_Asset>(),  // to_prefetch
-    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
-  }, {{
-    {::_pbi::TcParser::MiniParse, {}},
-    // .Scene.Asset.Pos pos = 1;
-    {::_pbi::TcParser::FastMtS1,
-     {10, 0, 0, PROTOBUF_FIELD_OFFSET(Scene_Asset, _impl_.pos_)}},
-    // .Scene.Asset.Scale scale = 2;
-    {::_pbi::TcParser::FastMtS1,
-     {18, 1, 1, PROTOBUF_FIELD_OFFSET(Scene_Asset, _impl_.scale_)}},
-    // string objdata = 3;
-    {::_pbi::TcParser::FastUS1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(Scene_Asset, _impl_.objdata_)}},
-  }}, {{
-    65535, 65535
-  }}, {{
-    // .Scene.Asset.Pos pos = 1;
-    {PROTOBUF_FIELD_OFFSET(Scene_Asset, _impl_.pos_), _Internal::kHasBitsOffset + 0, 0,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // .Scene.Asset.Scale scale = 2;
-    {PROTOBUF_FIELD_OFFSET(Scene_Asset, _impl_.scale_), _Internal::kHasBitsOffset + 1, 1,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
-    // string objdata = 3;
-    {PROTOBUF_FIELD_OFFSET(Scene_Asset, _impl_.objdata_), -1, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::Scene_Asset_Pos>()},
-    {::_pbi::TcParser::GetTable<::Scene_Asset_Scale>()},
-  }}, {{
-    "\13\0\0\7\0\0\0\0"
-    "Scene.Asset"
-    "objdata"
-  }},
-};
-
-PROTOBUF_NOINLINE void Scene_Asset::Clear() {
-// @@protoc_insertion_point(message_clear_start:Scene.Asset)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.objdata_.ClearToEmpty();
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      ABSL_DCHECK(_impl_.pos_ != nullptr);
-      _impl_.pos_->Clear();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      ABSL_DCHECK(_impl_.scale_ != nullptr);
-      _impl_.scale_->Clear();
-    }
-  }
-  _impl_._has_bits_.Clear();
-  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
-}
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::uint8_t* Scene_Asset::_InternalSerialize(
-            const MessageLite& base, ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) {
-          const Scene_Asset& this_ = static_cast<const Scene_Asset&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::uint8_t* Scene_Asset::_InternalSerialize(
-            ::uint8_t* target,
-            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-          const Scene_Asset& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(serialize_to_array_start:Scene.Asset)
-          ::uint32_t cached_has_bits = 0;
-          (void)cached_has_bits;
-
-          cached_has_bits = this_._impl_._has_bits_[0];
-          // .Scene.Asset.Pos pos = 1;
-          if (cached_has_bits & 0x00000001u) {
-            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                1, *this_._impl_.pos_, this_._impl_.pos_->GetCachedSize(), target,
-                stream);
-          }
-
-          // .Scene.Asset.Scale scale = 2;
-          if (cached_has_bits & 0x00000002u) {
-            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                2, *this_._impl_.scale_, this_._impl_.scale_->GetCachedSize(), target,
-                stream);
-          }
-
-          // string objdata = 3;
-          if (!this_._internal_objdata().empty()) {
-            const std::string& _s = this_._internal_objdata();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "Scene.Asset.objdata");
-            target = stream->WriteStringMaybeAliased(3, _s, target);
-          }
-
-          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
-            target =
-                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
-          }
-          // @@protoc_insertion_point(serialize_to_array_end:Scene.Asset)
-          return target;
-        }
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-        ::size_t Scene_Asset::ByteSizeLong(const MessageLite& base) {
-          const Scene_Asset& this_ = static_cast<const Scene_Asset&>(base);
-#else   // PROTOBUF_CUSTOM_VTABLE
-        ::size_t Scene_Asset::ByteSizeLong() const {
-          const Scene_Asset& this_ = *this;
-#endif  // PROTOBUF_CUSTOM_VTABLE
-          // @@protoc_insertion_point(message_byte_size_start:Scene.Asset)
-          ::size_t total_size = 0;
-
-          ::uint32_t cached_has_bits = 0;
-          // Prevent compiler warnings about cached_has_bits being unused
-          (void)cached_has_bits;
-
-          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
-           {
-            // string objdata = 3;
-            if (!this_._internal_objdata().empty()) {
-              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_objdata());
-            }
-          }
-          cached_has_bits = this_._impl_._has_bits_[0];
-          if (cached_has_bits & 0x00000003u) {
-            // .Scene.Asset.Pos pos = 1;
-            if (cached_has_bits & 0x00000001u) {
-              total_size += 1 +
-                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.pos_);
-            }
-            // .Scene.Asset.Scale scale = 2;
-            if (cached_has_bits & 0x00000002u) {
-              total_size += 1 +
-                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.scale_);
-            }
-          }
-          return this_.MaybeComputeUnknownFieldsSize(total_size,
-                                                     &this_._impl_._cached_size_);
-        }
-
-void Scene_Asset::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
-  auto* const _this = static_cast<Scene_Asset*>(&to_msg);
-  auto& from = static_cast<const Scene_Asset&>(from_msg);
-  ::google::protobuf::Arena* arena = _this->GetArena();
-  // @@protoc_insertion_point(class_specific_merge_from_start:Scene.Asset)
-  ABSL_DCHECK_NE(&from, _this);
-  ::uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_objdata().empty()) {
-    _this->_internal_set_objdata(from._internal_objdata());
-  }
-  cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      ABSL_DCHECK(from._impl_.pos_ != nullptr);
-      if (_this->_impl_.pos_ == nullptr) {
-        _this->_impl_.pos_ =
-            ::google::protobuf::Message::CopyConstruct<::Scene_Asset_Pos>(arena, *from._impl_.pos_);
-      } else {
-        _this->_impl_.pos_->MergeFrom(*from._impl_.pos_);
-      }
-    }
-    if (cached_has_bits & 0x00000002u) {
-      ABSL_DCHECK(from._impl_.scale_ != nullptr);
-      if (_this->_impl_.scale_ == nullptr) {
-        _this->_impl_.scale_ =
-            ::google::protobuf::Message::CopyConstruct<::Scene_Asset_Scale>(arena, *from._impl_.scale_);
-      } else {
-        _this->_impl_.scale_->MergeFrom(*from._impl_.scale_);
-      }
-    }
-  }
-  _this->_impl_._has_bits_[0] |= cached_has_bits;
-  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void Scene_Asset::CopyFrom(const Scene_Asset& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Scene.Asset)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-
-void Scene_Asset::InternalSwap(Scene_Asset* PROTOBUF_RESTRICT other) {
-  using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.objdata_, &other->_impl_.objdata_, arena);
-  ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Scene_Asset, _impl_.scale_)
-      + sizeof(Scene_Asset::_impl_.scale_)
-      - PROTOBUF_FIELD_OFFSET(Scene_Asset, _impl_.pos_)>(
-          reinterpret_cast<char*>(&_impl_.pos_),
-          reinterpret_cast<char*>(&other->_impl_.pos_));
-}
-
-::google::protobuf::Metadata Scene_Asset::GetMetadata() const {
-  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
-}
-// ===================================================================
-
 class Scene::_Internal {
  public:
 };
@@ -1345,7 +365,8 @@ Scene::Scene(::google::protobuf::Arena* arena)
 inline PROTOBUF_NDEBUG_INLINE Scene::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from, const ::Scene& from_msg)
-      : assetlist_{visibility, arena, from.assetlist_},
+      : asset1_(arena, from.asset1_),
+        asset2_(arena, from.asset2_),
         _cached_size_{0} {}
 
 Scene::Scene(
@@ -1367,7 +388,8 @@ Scene::Scene(
 inline PROTOBUF_NDEBUG_INLINE Scene::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : assetlist_{visibility, arena},
+      : asset1_(arena),
+        asset2_(arena),
         _cached_size_{0} {}
 
 inline void Scene::SharedCtor(::_pb::Arena* arena) {
@@ -1381,6 +403,8 @@ inline void Scene::SharedDtor(MessageLite& self) {
   Scene& this_ = static_cast<Scene&>(self);
   this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.asset1_.Destroy();
+  this_._impl_.asset2_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -1389,20 +413,8 @@ inline void* Scene::PlacementNew_(const void*, void* mem,
   return ::new (mem) Scene(arena);
 }
 constexpr auto Scene::InternalNewImpl_() {
-  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
-      PROTOBUF_FIELD_OFFSET(Scene, _impl_.assetlist_) +
-          decltype(Scene::_impl_.assetlist_)::
-              InternalGetArenaOffset(
-                  ::google::protobuf::Message::internal_visibility()),
-  });
-  if (arena_bits.has_value()) {
-    return ::google::protobuf::internal::MessageCreator::ZeroInit(
-        sizeof(Scene), alignof(Scene), *arena_bits);
-  } else {
-    return ::google::protobuf::internal::MessageCreator(&Scene::PlacementNew_,
-                                 sizeof(Scene),
-                                 alignof(Scene));
-  }
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(Scene),
+                                            alignof(Scene));
 }
 PROTOBUF_CONSTINIT
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
@@ -1432,17 +444,17 @@ const ::google::protobuf::internal::ClassData* Scene::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 1, 0, 2> Scene::_table_ = {
+const ::_pbi::TcParseTable<1, 2, 0, 0, 2> Scene::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
+    2, 8,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
+    4294967292,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    1,  // num_aux_entries
-    offsetof(decltype(_table_), aux_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
@@ -1450,18 +462,24 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> Scene::_table_ = {
     ::_pbi::TcParser::GetTable<::Scene>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // repeated .Scene.Asset assetlist = 1;
-    {::_pbi::TcParser::FastMtR1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Scene, _impl_.assetlist_)}},
+    // bytes asset2 = 2;
+    {::_pbi::TcParser::FastBS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(Scene, _impl_.asset2_)}},
+    // bytes asset1 = 1;
+    {::_pbi::TcParser::FastBS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Scene, _impl_.asset1_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // repeated .Scene.Asset assetlist = 1;
-    {PROTOBUF_FIELD_OFFSET(Scene, _impl_.assetlist_), 0, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
-  }}, {{
-    {::_pbi::TcParser::GetTable<::Scene_Asset>()},
-  }}, {{
+    // bytes asset1 = 1;
+    {PROTOBUF_FIELD_OFFSET(Scene, _impl_.asset1_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // bytes asset2 = 2;
+    {PROTOBUF_FIELD_OFFSET(Scene, _impl_.asset2_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
   }},
 };
 
@@ -1472,7 +490,8 @@ PROTOBUF_NOINLINE void Scene::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.assetlist_.Clear();
+  _impl_.asset1_.ClearToEmpty();
+  _impl_.asset2_.ClearToEmpty();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -1491,15 +510,16 @@ PROTOBUF_NOINLINE void Scene::Clear() {
           ::uint32_t cached_has_bits = 0;
           (void)cached_has_bits;
 
-          // repeated .Scene.Asset assetlist = 1;
-          for (unsigned i = 0, n = static_cast<unsigned>(
-                                   this_._internal_assetlist_size());
-               i < n; i++) {
-            const auto& repfield = this_._internal_assetlist().Get(i);
-            target =
-                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                    1, repfield, repfield.GetCachedSize(),
-                    target, stream);
+          // bytes asset1 = 1;
+          if (!this_._internal_asset1().empty()) {
+            const std::string& _s = this_._internal_asset1();
+            target = stream->WriteBytesMaybeAliased(1, _s, target);
+          }
+
+          // bytes asset2 = 2;
+          if (!this_._internal_asset2().empty()) {
+            const std::string& _s = this_._internal_asset2();
+            target = stream->WriteBytesMaybeAliased(2, _s, target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -1527,12 +547,15 @@ PROTOBUF_NOINLINE void Scene::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // repeated .Scene.Asset assetlist = 1;
-            {
-              total_size += 1UL * this_._internal_assetlist_size();
-              for (const auto& msg : this_._internal_assetlist()) {
-                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
-              }
+            // bytes asset1 = 1;
+            if (!this_._internal_asset1().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                              this_._internal_asset1());
+            }
+            // bytes asset2 = 2;
+            if (!this_._internal_asset2().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                              this_._internal_asset2());
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -1547,8 +570,12 @@ void Scene::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::p
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_assetlist()->MergeFrom(
-      from._internal_assetlist());
+  if (!from._internal_asset1().empty()) {
+    _this->_internal_set_asset1(from._internal_asset1());
+  }
+  if (!from._internal_asset2().empty()) {
+    _this->_internal_set_asset2(from._internal_asset2());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1562,8 +589,11 @@ void Scene::CopyFrom(const Scene& from) {
 
 void Scene::InternalSwap(Scene* PROTOBUF_RESTRICT other) {
   using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  _impl_.assetlist_.InternalSwap(&other->_impl_.assetlist_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.asset1_, &other->_impl_.asset1_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.asset2_, &other->_impl_.asset2_, arena);
 }
 
 ::google::protobuf::Metadata Scene::GetMetadata() const {

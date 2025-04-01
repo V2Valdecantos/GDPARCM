@@ -1,15 +1,46 @@
+#include "AppWindow.h"
 #include "SceneServer.h"
+#include "iostream"
 
+/*
+MODIFIED FOR GDPARCM
+
+THIS PROJECT SERVES AS THE CLIENT RENDERING SYSTEM
+*/
 int main()
 {
+	
 
-    //run the server
-    SceneStreamerServer server;
-    server.start();
+	AppWindow::initialize();
+	AppWindow* runningApp = (AppWindow*)AppWindow::getInstance();
 
-    //wait for server to startup
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    while (server.isRunning) {} //wait for shutdown
-  
+	int input = -1;
+	do
+	{
+		std::cout << "[SYSYEM]: Enter 1 for Server; 2 for Client." << std::endl;
+		std::cout << "[INPUT]: ";
+		std::cin >> input;
 
+		if (input == 1 || input == 2)
+			break;
+
+	} while (input != 1 || input != 2);
+
+	if (input == 2) 
+	{
+
+		//runningApp->initializeEngine();
+
+		while (runningApp->isRunning())
+		{
+			runningApp->broadcast();
+		}
+	}
+	else
+	{
+		SceneStreamerServer server;
+		server.run();
+
+	}
+	return 0;
 }

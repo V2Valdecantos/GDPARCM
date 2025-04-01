@@ -36,42 +36,45 @@ class SceneStreamer final {
    public:
     virtual ~StubInterface() {}
     // Requests for a scene
-    virtual ::grpc::Status RequestScene(::grpc::ClientContext* context, const ::SceneIndex& request, ::Scene* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Scene>> AsyncRequestScene(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Scene>>(AsyncRequestSceneRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::Scene>> RequestScene(::grpc::ClientContext* context, const ::SceneIndex& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::Scene>>(RequestSceneRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Scene>> PrepareAsyncRequestScene(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::Scene>>(PrepareAsyncRequestSceneRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::Scene>> AsyncRequestScene(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::Scene>>(AsyncRequestSceneRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::Scene>> PrepareAsyncRequestScene(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::Scene>>(PrepareAsyncRequestSceneRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
       // Requests for a scene
-      virtual void RequestScene(::grpc::ClientContext* context, const ::SceneIndex* request, ::Scene* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void RequestScene(::grpc::ClientContext* context, const ::SceneIndex* request, ::Scene* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void RequestScene(::grpc::ClientContext* context, const ::SceneIndex* request, ::grpc::ClientReadReactor< ::Scene>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::Scene>* AsyncRequestSceneRaw(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::Scene>* PrepareAsyncRequestSceneRaw(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::Scene>* RequestSceneRaw(::grpc::ClientContext* context, const ::SceneIndex& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::Scene>* AsyncRequestSceneRaw(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::Scene>* PrepareAsyncRequestSceneRaw(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status RequestScene(::grpc::ClientContext* context, const ::SceneIndex& request, ::Scene* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Scene>> AsyncRequestScene(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Scene>>(AsyncRequestSceneRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientReader< ::Scene>> RequestScene(::grpc::ClientContext* context, const ::SceneIndex& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::Scene>>(RequestSceneRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Scene>> PrepareAsyncRequestScene(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::Scene>>(PrepareAsyncRequestSceneRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::Scene>> AsyncRequestScene(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::Scene>>(AsyncRequestSceneRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::Scene>> PrepareAsyncRequestScene(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::Scene>>(PrepareAsyncRequestSceneRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void RequestScene(::grpc::ClientContext* context, const ::SceneIndex* request, ::Scene* response, std::function<void(::grpc::Status)>) override;
-      void RequestScene(::grpc::ClientContext* context, const ::SceneIndex* request, ::Scene* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void RequestScene(::grpc::ClientContext* context, const ::SceneIndex* request, ::grpc::ClientReadReactor< ::Scene>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -83,8 +86,9 @@ class SceneStreamer final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::Scene>* AsyncRequestSceneRaw(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::Scene>* PrepareAsyncRequestSceneRaw(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::Scene>* RequestSceneRaw(::grpc::ClientContext* context, const ::SceneIndex& request) override;
+    ::grpc::ClientAsyncReader< ::Scene>* AsyncRequestSceneRaw(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::Scene>* PrepareAsyncRequestSceneRaw(::grpc::ClientContext* context, const ::SceneIndex& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_RequestScene_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -94,7 +98,7 @@ class SceneStreamer final {
     Service();
     virtual ~Service();
     // Requests for a scene
-    virtual ::grpc::Status RequestScene(::grpc::ServerContext* context, const ::SceneIndex* request, ::Scene* response);
+    virtual ::grpc::Status RequestScene(::grpc::ServerContext* context, const ::SceneIndex* request, ::grpc::ServerWriter< ::Scene>* writer);
   };
   template <class BaseClass>
   class WithAsyncMethod_RequestScene : public BaseClass {
@@ -108,12 +112,12 @@ class SceneStreamer final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RequestScene(::grpc::ServerContext* /*context*/, const ::SceneIndex* /*request*/, ::Scene* /*response*/) override {
+    ::grpc::Status RequestScene(::grpc::ServerContext* /*context*/, const ::SceneIndex* /*request*/, ::grpc::ServerWriter< ::Scene>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestRequestScene(::grpc::ServerContext* context, ::SceneIndex* request, ::grpc::ServerAsyncResponseWriter< ::Scene>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestRequestScene(::grpc::ServerContext* context, ::SceneIndex* request, ::grpc::ServerAsyncWriter< ::Scene>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   typedef WithAsyncMethod_RequestScene<Service > AsyncService;
@@ -124,25 +128,20 @@ class SceneStreamer final {
    public:
     WithCallbackMethod_RequestScene() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::SceneIndex, ::Scene>(
+          new ::grpc::internal::CallbackServerStreamingHandler< ::SceneIndex, ::Scene>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::SceneIndex* request, ::Scene* response) { return this->RequestScene(context, request, response); }));}
-    void SetMessageAllocatorFor_RequestScene(
-        ::grpc::MessageAllocator< ::SceneIndex, ::Scene>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::SceneIndex, ::Scene>*>(handler)
-              ->SetMessageAllocator(allocator);
+                   ::grpc::CallbackServerContext* context, const ::SceneIndex* request) { return this->RequestScene(context, request); }));
     }
     ~WithCallbackMethod_RequestScene() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RequestScene(::grpc::ServerContext* /*context*/, const ::SceneIndex* /*request*/, ::Scene* /*response*/) override {
+    ::grpc::Status RequestScene(::grpc::ServerContext* /*context*/, const ::SceneIndex* /*request*/, ::grpc::ServerWriter< ::Scene>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* RequestScene(
-      ::grpc::CallbackServerContext* /*context*/, const ::SceneIndex* /*request*/, ::Scene* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerWriteReactor< ::Scene>* RequestScene(
+      ::grpc::CallbackServerContext* /*context*/, const ::SceneIndex* /*request*/)  { return nullptr; }
   };
   typedef WithCallbackMethod_RequestScene<Service > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
@@ -158,7 +157,7 @@ class SceneStreamer final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RequestScene(::grpc::ServerContext* /*context*/, const ::SceneIndex* /*request*/, ::Scene* /*response*/) override {
+    ::grpc::Status RequestScene(::grpc::ServerContext* /*context*/, const ::SceneIndex* /*request*/, ::grpc::ServerWriter< ::Scene>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -175,12 +174,12 @@ class SceneStreamer final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RequestScene(::grpc::ServerContext* /*context*/, const ::SceneIndex* /*request*/, ::Scene* /*response*/) override {
+    ::grpc::Status RequestScene(::grpc::ServerContext* /*context*/, const ::SceneIndex* /*request*/, ::grpc::ServerWriter< ::Scene>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestRequestScene(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestRequestScene(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -190,51 +189,51 @@ class SceneStreamer final {
    public:
     WithRawCallbackMethod_RequestScene() {
       ::grpc::Service::MarkMethodRawCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->RequestScene(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->RequestScene(context, request); }));
     }
     ~WithRawCallbackMethod_RequestScene() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status RequestScene(::grpc::ServerContext* /*context*/, const ::SceneIndex* /*request*/, ::Scene* /*response*/) override {
+    ::grpc::Status RequestScene(::grpc::ServerContext* /*context*/, const ::SceneIndex* /*request*/, ::grpc::ServerWriter< ::Scene>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* RequestScene(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* RequestScene(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
   };
+  typedef Service StreamedUnaryService;
   template <class BaseClass>
-  class WithStreamedUnaryMethod_RequestScene : public BaseClass {
+  class WithSplitStreamingMethod_RequestScene : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_RequestScene() {
+    WithSplitStreamingMethod_RequestScene() {
       ::grpc::Service::MarkMethodStreamed(0,
-        new ::grpc::internal::StreamedUnaryHandler<
+        new ::grpc::internal::SplitServerStreamingHandler<
           ::SceneIndex, ::Scene>(
             [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
+                   ::grpc::ServerSplitStreamer<
                      ::SceneIndex, ::Scene>* streamer) {
                        return this->StreamedRequestScene(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_RequestScene() override {
+    ~WithSplitStreamingMethod_RequestScene() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status RequestScene(::grpc::ServerContext* /*context*/, const ::SceneIndex* /*request*/, ::Scene* /*response*/) override {
+    ::grpc::Status RequestScene(::grpc::ServerContext* /*context*/, const ::SceneIndex* /*request*/, ::grpc::ServerWriter< ::Scene>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedRequestScene(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::SceneIndex,::Scene>* server_unary_streamer) = 0;
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedRequestScene(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::SceneIndex,::Scene>* server_split_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_RequestScene<Service > StreamedUnaryService;
-  typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_RequestScene<Service > StreamedService;
+  typedef WithSplitStreamingMethod_RequestScene<Service > SplitStreamedService;
+  typedef WithSplitStreamingMethod_RequestScene<Service > StreamedService;
 };
 
 

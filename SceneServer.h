@@ -9,8 +9,6 @@
 #include "scenestreamer.grpc.pb.h"
 #include "IETThread.h"
 
-#include "tiny_obj_loader.h"
-
 struct Pos 
 {
 	int x, y, z;
@@ -20,24 +18,15 @@ struct Scale
 {
 	int x, y, z;
 };
-struct Asset 
-{
-	Pos pos;
-	Scale scale;
-	tinyobj::attrib_t attribs;
-	std::vector<tinyobj::shape_t> shapes;
-	std::vector<tinyobj::material_t> materials;
 
-};
-
-typedef std::vector<Asset> Scene;
+typedef std::vector<Scene*> SceneList;
 
 class SceneStreamerServer final : public SceneStreamer::Service, public IETThread
 {
 	public:
-		grpc::Status RequestScene(grpc::ServerContext* context, const SceneIndex* request, Scene* response) override;
+		grpc::Status RequestScene(grpc::ServerContext* context, const SceneIndex* request, grpc::ServerWriter<Scene>* writer) override;
 
-		Asset loadAssetFromFile(std::string path);
+		std::string loadBytesFromFile(const wchar_t* path);
 		void initializeScenes();
 		
 		void run() override;
@@ -46,7 +35,9 @@ class SceneStreamerServer final : public SceneStreamer::Service, public IETThrea
 
 		bool isRunning = false;
 
+	
 	private:
-		std::vector<Scene> sceneList;
+		SceneList sceneList;
+		Scene* response;
 };
 
