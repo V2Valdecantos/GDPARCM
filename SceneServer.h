@@ -26,7 +26,7 @@ class SceneStreamerServer final : public SceneStreamer::Service, public IETThrea
 	public:
 		grpc::Status RequestScene(grpc::ServerContext* context, const SceneIndex* request, grpc::ServerWriter<Scene>* writer) override;
 
-		std::string loadBytesFromFile(const wchar_t* path);
+		std::stringstream loadBytesFromFile(const wchar_t* path);
 		void initializeScenes();
 		
 		void run() override;

@@ -4,6 +4,8 @@
 #include "MeshManager.h"
 #include "MeshObject.h"
 
+#include <fstream>
+
 #include "Logger.h"
 
 #include <grpcpp/create_channel.h>
@@ -14,7 +16,7 @@ namespace GDEngine {
 	void StreamingManager::startStreamingScene(int index)
 	{
 		std::thread streamer(&StreamingManager::RequestScene, this, index);
-		streamer.join();
+		streamer.detach();
 	}
 
 	void StreamingManager::streamScene(int index)
@@ -37,15 +39,15 @@ namespace GDEngine {
 		std::unique_ptr<grpc::ClientReader<Scene>> reader(this->stub_->RequestScene(&context, request));
 		this->sceneFlags[index] = true;
 
+
 		while (reader->Read(&response))
 		{
-			this->createMeshObjectFromStream(response.asset1().c_str());
+			this->createMeshObjectFromStream(response.asset1());
 			Logger::log(this, "Streamed Asset");
-			this->createMeshObjectFromStream(response.asset2().c_str());
+			this->createMeshObjectFromStream(response.asset2());
 			Logger::log(this, "Streamed Asset");
 		
 		}
-
 
 		grpc::Status status = reader->Finish();
 		Logger::log(this, "Done Streaming");
@@ -59,19 +61,19 @@ namespace GDEngine {
 		obj->setPosition(0, 0, 0);
 		obj->setScale(10, 10, 10);
 
-		if (std::is_trivially_copyable<MeshObject>::value)
-		{
-			Logger::log(this, "Cannot convert from bytes");
-			return false;
-		}
-		
+		std::ifstream b(bytes, std::ios::binary);
+		std::stringstream objBytes;
+
+		objBytes << b.rdbuf();
+
 		byte* begin_object = reinterpret_cast<byte*>(std::addressof(obj));
-		std::copy(std::begin(bytes), std::end(bytes), begin_object);
+		std::copy(std::begin(objBytes.str()), std::end(objBytes.str()), begin_object);
 
 
 		GameObjectManager::getInstance()->addObject(obj);
 		return true;
 	}
+
 
 	StreamingManager::StreamingManager(std::shared_ptr<grpc::ChannelInterface> channel)
 	{

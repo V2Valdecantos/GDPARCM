@@ -14,6 +14,7 @@
 #include <iostream>
 #include <iomanip>
 
+#include <fstream>
 
 #include "GraphicsEngine.h"
 #include "MeshObject.h"
@@ -30,12 +31,13 @@ grpc::Status SceneStreamerServer::RequestScene(grpc::ServerContext* context, con
 	return grpc::Status::OK;
 }
 
-std::string SceneStreamerServer::loadBytesFromFile(const wchar_t* path)
+std::stringstream SceneStreamerServer::loadBytesFromFile(const wchar_t* path)
 {	 
 
 	//make a mesh object
 	MeshObject* mesh = new MeshObject("obj", path);
 	MeshObject* obj;
+
 
 	//convert it to a char array
 	std::array<byte, sizeof(MeshObject) > bytes;
@@ -43,14 +45,21 @@ std::string SceneStreamerServer::loadBytesFromFile(const wchar_t* path)
 	const byte* end = begin + sizeof(MeshObject);
 	std::copy(begin, end, std::begin(bytes));
  
+	std::string objBytes(bytes.begin(), bytes.end());
+
+	std::ifstream b(objBytes, std::ios::binary);
+	std::stringstream returnBytes;
+
+	returnBytes << b.rdbuf();
+
 	//assign it to the return value
-	std::string returnBytes(bytes.begin(), bytes.end());
+	
 
 	//test mesh
 	//byte* begin_object = reinterpret_cast<byte*>(std::addressof(obj));
 	//std::copy(std::begin(returnBytes), std::end(returnBytes), begin_object);
 
-	std::cout << "Converted mesh to bytes: " << std::endl << returnBytes << std::endl;
+	//std::cout << "Converted mesh to bytes: " << std::endl << returnBytes << std::endl;
 	return returnBytes;
 }
 
@@ -66,10 +75,10 @@ void SceneStreamerServer::initializeScenes()
 	}
 	
 	//Scene 1
-	std::string bunny_bytes = this->loadBytesFromFile(L"assets/meshes/bunny.obj");
-	std::string lucy_bytes = this->loadBytesFromFile(L"assets/meshes/lucy.obj");
-	this->sceneList[0]->set_asset1(bunny_bytes);
-	this->sceneList[0]->set_asset2(lucy_bytes);
+	std::stringstream bunny_bytes = this->loadBytesFromFile(L"assets/meshes/bunny.obj");
+	std::stringstream lucy_bytes = this->loadBytesFromFile(L"assets/meshes/lucy.obj");
+	this->sceneList[0]->set_asset1(bunny_bytes.str());
+	this->sceneList[0]->set_asset2(lucy_bytes.str());
 
 
 	//Scene 2
