@@ -31,36 +31,27 @@ grpc::Status SceneStreamerServer::RequestScene(grpc::ServerContext* context, con
 	return grpc::Status::OK;
 }
 
-std::stringstream SceneStreamerServer::loadBytesFromFile(const wchar_t* path)
+std::byte* SceneStreamerServer::loadBytesFromFile(const wchar_t* path)
 {	 
 
 	//make a mesh object
 	MeshObject* mesh = new MeshObject("obj", path);
-	MeshObject* obj;
+	//MeshObject* mesh2 = new MeshObject("replaced", path);
 
+	//convert to byte
+	std::byte* dest;
+	std::memcpy(dest, mesh, sizeof(MeshObject));
 
-	//convert it to a char array
-	std::array<byte, sizeof(MeshObject) > bytes;
-	const byte* begin = reinterpret_cast<const byte*>(std::addressof(mesh));
-	const byte* end = begin + sizeof(MeshObject);
-	std::copy(begin, end, std::begin(bytes));
- 
-	std::string objBytes(bytes.begin(), bytes.end());
+	//test mesh if attributes remain
+	//std::memcpy(mesh2, dest, sizeof(MeshObject));
 
-	std::ifstream b(objBytes, std::ios::binary);
-	std::stringstream returnBytes;
+	//convert byte to string
+	//std::stringstream returnBytes;
+	//std::memcpy(&returnBytes, &dest, sizeof(MeshObject));
 
-	returnBytes << b.rdbuf();
-
-	//assign it to the return value
-	
-
-	//test mesh
-	//byte* begin_object = reinterpret_cast<byte*>(std::addressof(obj));
-	//std::copy(std::begin(returnBytes), std::end(returnBytes), begin_object);
 
 	//std::cout << "Converted mesh to bytes: " << std::endl << returnBytes << std::endl;
-	return returnBytes;
+	return dest;
 }
 
 void SceneStreamerServer::initializeScenes()
@@ -75,10 +66,14 @@ void SceneStreamerServer::initializeScenes()
 	}
 	
 	//Scene 1
-	std::stringstream bunny_bytes = this->loadBytesFromFile(L"assets/meshes/bunny.obj");
-	std::stringstream lucy_bytes = this->loadBytesFromFile(L"assets/meshes/lucy.obj");
-	this->sceneList[0]->set_asset1(bunny_bytes.str());
-	this->sceneList[0]->set_asset2(lucy_bytes.str());
+	std::byte* bunny_bytes = this->loadBytesFromFile(L"assets/meshes/bunny.obj");
+	std::byte* lucy_bytes = this->loadBytesFromFile(L"assets/meshes/bunny.obj");
+	std::string bunnystr;
+	std::memcpy(&bunnystr, bunny_bytes, sizeof(bunny_bytes));
+	std::string lucystr;
+	std::memcpy(&lucystr, lucy_bytes, sizeof(lucy_bytes));
+	this->sceneList[0]->set_asset1(bunnystr);
+	this->sceneList[0]->set_asset2(lucystr);
 
 
 	//Scene 2

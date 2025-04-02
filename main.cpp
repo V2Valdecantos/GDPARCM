@@ -13,6 +13,7 @@ int main()
 
 	AppWindow::initialize();
 	AppWindow* runningApp = (AppWindow*)AppWindow::getInstance();
+	//runningApp->initializeEngine();
 
 	int input = -1;
 	do
@@ -28,8 +29,6 @@ int main()
 
 	if (input == 2) 
 	{
-
-		//runningApp->initializeEngine();
 
 		while (runningApp->isRunning())
 		{

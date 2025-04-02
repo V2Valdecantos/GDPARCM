@@ -61,14 +61,12 @@ namespace GDEngine {
 		obj->setPosition(0, 0, 0);
 		obj->setScale(10, 10, 10);
 
-		std::ifstream b(bytes, std::ios::binary);
-		std::stringstream objBytes;
 
-		objBytes << b.rdbuf();
+		//test mesh if attributes remain
+		std::byte* dest;
+		std::memcpy(&dest, &bytes, sizeof(MeshObject));
 
-		byte* begin_object = reinterpret_cast<byte*>(std::addressof(obj));
-		std::copy(std::begin(objBytes.str()), std::end(objBytes.str()), begin_object);
-
+		std::memcpy(obj, &dest, sizeof(MeshObject));
 
 		GameObjectManager::getInstance()->addObject(obj);
 		return true;
