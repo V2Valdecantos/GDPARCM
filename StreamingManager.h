@@ -20,7 +20,7 @@ namespace GDEngine {
 		bool sceneFlags[4] = { false, false, false, false };
 
 	private:
-		bool createMeshObjectFromStream(std::string bytes);
+		bool createMeshObjectFromStream(std::string bytes, int sceneID, int index);
 
 	private:
 		static StreamingManager* P_SHARED_INSTANCE;

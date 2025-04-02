@@ -423,13 +423,13 @@
     <ClCompile Include="SceneServer.cpp">
       <Filter>Server</Filter>
     </ClCompile>
+    <ClCompile Include="StreamingManager.cpp" />
     <ClCompile Include="scenestreamer.grpc.pb.cc">
       <Filter>Server\Proto</Filter>
     </ClCompile>
     <ClCompile Include="scenestreamer.pb.cc">
       <Filter>Server\Proto</Filter>
     </ClCompile>
-    <ClCompile Include="StreamingManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppWindow.h">
@@ -717,13 +717,13 @@
     <ClInclude Include="SceneServer.h">
       <Filter>Server</Filter>
     </ClInclude>
+    <ClInclude Include="StreamingManager.h" />
     <ClInclude Include="scenestreamer.grpc.pb.h">
       <Filter>Server\Proto</Filter>
     </ClInclude>
     <ClInclude Include="scenestreamer.pb.h">
       <Filter>Server\Proto</Filter>
     </ClInclude>
-    <ClInclude Include="StreamingManager.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="BasePixelShader.hlsl">

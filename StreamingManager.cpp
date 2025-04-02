@@ -15,6 +15,8 @@ namespace GDEngine {
 
 	void StreamingManager::startStreamingScene(int index)
 	{
+		//retry connection to server
+		//this->stub_ = SceneStreamer::NewStub(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
 		std::thread streamer(&StreamingManager::RequestScene, this, index);
 		streamer.detach();
 	}
@@ -26,12 +28,22 @@ namespace GDEngine {
 
 	void StreamingManager::RequestScene(int index)
 	{
+		
 		SceneIndex request; 
 		request.set_sceneid(index);
+		//grpc::ClientContext pingcontext;
 		grpc::ClientContext context;
 
-		Scene response;
+		////"ping" the server
+		//msg pingmsg; pingmsg.set_strmsg("Requesting Scene " + std::to_string(index));
+		//msg reply;
+		//grpc::Status status = this->stub_->Ping(&pingcontext, pingmsg, &reply);
 
+		//if (status.ok())
+		//	Logger::log(this, reply.strmsg());
+
+		//scene requesting
+		Scene response;
 		std::chrono::time_point deadline = std::chrono::system_clock::now() + std::chrono::milliseconds(15000);
 		context.set_deadline(deadline);
 
@@ -42,33 +54,35 @@ namespace GDEngine {
 
 		while (reader->Read(&response))
 		{
-			this->createMeshObjectFromStream(response.asset1());
+			Logger::log(this, "Starting stream");
+			this->createMeshObjectFromStream(response.asset1(), index, 1);
 			Logger::log(this, "Streamed Asset");
-			this->createMeshObjectFromStream(response.asset2());
+			this->createMeshObjectFromStream(response.asset2(), index, 2);
 			Logger::log(this, "Streamed Asset");
 		
 		}
 
-		grpc::Status status = reader->Finish();
 		Logger::log(this, "Done Streaming");
-
 	}
 
-	bool StreamingManager::createMeshObjectFromStream(std::string bytes)
+	bool StreamingManager::createMeshObjectFromStream(std::string bytes, int sceneID, int index)
 	{
-		MeshObject* obj = new MeshObject("new obj", L"assets/meshes/bunny.obj");
-		Logger::log(this, "Received Bytes: " + bytes);
-		obj->setPosition(0, 0, 0);
-		obj->setScale(10, 10, 10);
+		//load the bytes into a new obj file
+		std::string modelLocation = "assets/streamed/"; \
+		std::string modelName = "scene_" + std::to_string(sceneID) + "_object" + std::to_string(index);
+		std::string filePath = modelLocation + modelName + ".obj";
+		//convert path to wchar_t
+		std::wstring widestr = std::wstring(filePath.begin(), filePath.end());
+		const wchar_t* charPath = widestr.c_str();
 
+		std::ofstream file(filePath, std::ios::binary);
+		file << bytes;
 
-		//test mesh if attributes remain
-		std::byte* dest;
-		std::memcpy(&dest, &bytes, sizeof(MeshObject));
+		//create the gameobject
+		MeshObject* object = new MeshObject(modelName, charPath);
+		object->setScale(10,10,10);
+		GameObjectManager::getInstance()->addObject(object);
 
-		std::memcpy(obj, &dest, sizeof(MeshObject));
-
-		GameObjectManager::getInstance()->addObject(obj);
 		return true;
 	}
 

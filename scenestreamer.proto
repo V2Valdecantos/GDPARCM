@@ -4,11 +4,16 @@ syntax = "proto3";
 service SceneStreamer {
 	// Requests for a scene
 	rpc RequestScene (SceneIndex) returns (stream Scene) {}
+	rpc Ping (msg) returns (msg) {}
 }
 
 // The request message containing the scene index.
 message SceneIndex {
 	int32 sceneid = 1;
+}
+
+message msg {
+	string strmsg = 1;
 }
 
 // The response message containing the list of assets/models

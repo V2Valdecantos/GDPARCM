@@ -31,27 +31,23 @@ grpc::Status SceneStreamerServer::RequestScene(grpc::ServerContext* context, con
 	return grpc::Status::OK;
 }
 
-std::byte* SceneStreamerServer::loadBytesFromFile(const wchar_t* path)
+grpc::Status SceneStreamerServer::Ping(grpc::ServerContext* context, const msg* request, msg* response)
+{
+	std::cout << "[CLIENT]: " << request->strmsg() << std::endl; 
+
+	response->set_strmsg("[SERVER]: Request Accepted.");
+	return grpc::Status::OK;
+}
+
+std::stringstream  SceneStreamerServer::loadBytesFromFile(const wchar_t* path)
 {	 
+	const std::filesystem::path filePath = path;
 
-	//make a mesh object
-	MeshObject* mesh = new MeshObject("obj", path);
-	//MeshObject* mesh2 = new MeshObject("replaced", path);
+	const std::ifstream file(filePath, std::ios::binary);
+	std::stringstream returnBytes;
+	returnBytes << file.rdbuf();
 
-	//convert to byte
-	std::byte* dest;
-	std::memcpy(dest, mesh, sizeof(MeshObject));
-
-	//test mesh if attributes remain
-	//std::memcpy(mesh2, dest, sizeof(MeshObject));
-
-	//convert byte to string
-	//std::stringstream returnBytes;
-	//std::memcpy(&returnBytes, &dest, sizeof(MeshObject));
-
-
-	//std::cout << "Converted mesh to bytes: " << std::endl << returnBytes << std::endl;
-	return dest;
+	return returnBytes;
 }
 
 void SceneStreamerServer::initializeScenes()
@@ -66,14 +62,10 @@ void SceneStreamerServer::initializeScenes()
 	}
 	
 	//Scene 1
-	std::byte* bunny_bytes = this->loadBytesFromFile(L"assets/meshes/bunny.obj");
-	std::byte* lucy_bytes = this->loadBytesFromFile(L"assets/meshes/bunny.obj");
-	std::string bunnystr;
-	std::memcpy(&bunnystr, bunny_bytes, sizeof(bunny_bytes));
-	std::string lucystr;
-	std::memcpy(&lucystr, lucy_bytes, sizeof(lucy_bytes));
-	this->sceneList[0]->set_asset1(bunnystr);
-	this->sceneList[0]->set_asset2(lucystr);
+	std::stringstream bunny_bytes = this->loadBytesFromFile(L"assets/meshes/bunny.obj");
+	std::stringstream lucy_bytes = this->loadBytesFromFile(L"assets/meshes/lucy.obj");
+	this->sceneList[0]->set_asset1(bunny_bytes.str());
+	this->sceneList[0]->set_asset2(lucy_bytes.str());
 
 
 	//Scene 2
@@ -92,7 +84,7 @@ void SceneStreamerServer::RunServer(uint16_t port)
 
 	//initialize all scenes to be streamed
 	service.initializeScenes();
-	std::cout << "< INITIALIZED SCENES > " << serverAddress << std::endl;
+	std::cout << "< INITIALIZED SCENES > " << std::endl;
 
 	grpc::EnableDefaultHealthCheckService(true);
 	grpc::reflection::InitProtoReflectionServerBuilderPlugin();
