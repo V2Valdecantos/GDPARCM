@@ -31,27 +31,14 @@ grpc::Status SceneStreamerServer::RequestScene(grpc::ServerContext* context, con
 	return grpc::Status::OK;
 }
 
-std::byte* SceneStreamerServer::loadBytesFromFile(const wchar_t* path)
+std::stringstream SceneStreamerServer::loadBytesFromFile(const wchar_t* path)
 {	 
 
-	//make a mesh object
-	MeshObject* mesh = new MeshObject("obj", path);
-	//MeshObject* mesh2 = new MeshObject("replaced", path);
+	const std::ifstream file(path, std::ios::binary);
+	std::stringstream objBytes;
+	objBytes << file.rdbuf();
 
-	//convert to byte
-	std::byte* dest;
-	std::memcpy(dest, mesh, sizeof(MeshObject));
-
-	//test mesh if attributes remain
-	//std::memcpy(mesh2, dest, sizeof(MeshObject));
-
-	//convert byte to string
-	//std::stringstream returnBytes;
-	//std::memcpy(&returnBytes, &dest, sizeof(MeshObject));
-
-
-	//std::cout << "Converted mesh to bytes: " << std::endl << returnBytes << std::endl;
-	return dest;
+	return objBytes;
 }
 
 void SceneStreamerServer::initializeScenes()
@@ -66,14 +53,10 @@ void SceneStreamerServer::initializeScenes()
 	}
 	
 	//Scene 1
-	std::byte* bunny_bytes = this->loadBytesFromFile(L"assets/meshes/bunny.obj");
-	std::byte* lucy_bytes = this->loadBytesFromFile(L"assets/meshes/bunny.obj");
-	std::string bunnystr;
-	std::memcpy(&bunnystr, bunny_bytes, sizeof(bunny_bytes));
-	std::string lucystr;
-	std::memcpy(&lucystr, lucy_bytes, sizeof(lucy_bytes));
-	this->sceneList[0]->set_asset1(bunnystr);
-	this->sceneList[0]->set_asset2(lucystr);
+	std::stringstream bunny_bytes = this->loadBytesFromFile(L"assets/meshes/bunny.obj");
+	std::stringstream lucy_bytes = this->loadBytesFromFile(L"assets/meshes/lucy.obj");
+	this->sceneList[0]->set_asset1(bunny_bytes.str());
+	this->sceneList[0]->set_asset2(lucy_bytes.str());
 
 
 	//Scene 2

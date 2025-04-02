@@ -42,9 +42,9 @@ namespace GDEngine {
 
 		while (reader->Read(&response))
 		{
-			this->createMeshObjectFromStream(response.asset1());
+			this->createMeshObjectFromStream(response.asset1(), index, 1);
 			Logger::log(this, "Streamed Asset");
-			this->createMeshObjectFromStream(response.asset2());
+			this->createMeshObjectFromStream(response.asset2(), index, 2);
 			Logger::log(this, "Streamed Asset");
 		
 		}
@@ -54,19 +54,24 @@ namespace GDEngine {
 
 	}
 
-	bool StreamingManager::createMeshObjectFromStream(std::string bytes)
+	bool StreamingManager::createMeshObjectFromStream(std::string bytes, int sceneID, int index)
 	{
-		MeshObject* obj = new MeshObject("new obj", L"assets/meshes/bunny.obj");
-		Logger::log(this, "Received Bytes: " + bytes);
+
+		//make obj file
+		std::string modelLoc = "assets/streamed/";
+		std::string fileName = "scene_" + std::to_string(sceneID) + "_object_" + std::to_string(index);
+		std::string path = modelLoc + fileName + ".obj";
+		std::ofstream file(fileName, std::ios::binary);
+
+		file << bytes;
+
+		//filepath
+		std::wstring widestr = std::wstring(path.begin(), path.end());
+		const wchar_t* charPath = widestr.c_str();
+
+		MeshObject* obj = new MeshObject(fileName, charPath);
 		obj->setPosition(0, 0, 0);
 		obj->setScale(10, 10, 10);
-
-
-		//test mesh if attributes remain
-		std::byte* dest;
-		std::memcpy(&dest, &bytes, sizeof(MeshObject));
-
-		std::memcpy(obj, &dest, sizeof(MeshObject));
 
 		GameObjectManager::getInstance()->addObject(obj);
 		return true;
