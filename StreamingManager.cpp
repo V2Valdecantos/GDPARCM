@@ -39,19 +39,28 @@ namespace GDEngine {
 		std::unique_ptr<grpc::ClientReader<Scene>> reader(this->stub_->RequestScene(&context, request));
 		this->sceneFlags[index] = true;
 
-
+		std::stringstream a1, a2, a3, a4, a5;
 		while (reader->Read(&response))
 		{
-			this->createMeshObjectFromStream(response.asset1(), index, 1);
-			Logger::log(this, "Streamed Asset");
-			this->createMeshObjectFromStream(response.asset2(), index, 2);
-			Logger::log(this, "Streamed Asset");
-		
+			a1 << response.asset1();
+			a2 << response.asset2();
 		}
-
 		grpc::Status status = reader->Finish();
-		Logger::log(this, "Done Streaming");
 
+		if (status.ok()) 
+		{
+			this->createMeshObjectFromStream(a1.str(), index, 1);
+			Logger::log(this, "Streamed Asset");
+			this->createMeshObjectFromStream(a2.str(), index, 2);
+			Logger::log(this, "Streamed Asset");
+
+
+			Logger::log(this, "Done Streaming");
+		}
+		else 
+		{
+			Logger::log(this, "Stream Failed");
+		}
 	}
 
 	bool StreamingManager::createMeshObjectFromStream(std::string bytes, int sceneID, int index)
@@ -71,7 +80,7 @@ namespace GDEngine {
 
 		MeshObject* obj = new MeshObject(fileName, charPath);
 		obj->setPosition(0, 0, 0);
-		obj->setScale(10, 10, 10);
+		obj->setScale(4, 4, 4);
 
 		GameObjectManager::getInstance()->addObject(obj);
 		return true;

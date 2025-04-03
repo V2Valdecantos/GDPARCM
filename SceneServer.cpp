@@ -55,9 +55,9 @@ void SceneStreamerServer::initializeScenes()
 	
 	//Scene 1
 	std::stringstream bunny_bytes = this->loadBytesFromFile(L"assets/meshes/bunny.obj");
-	std::stringstream lucy_bytes = this->loadBytesFromFile(L"assets/meshes/bunny.obj");
+	std::stringstream tea_bytes = this->loadBytesFromFile(L"assets/meshes/teapot.obj");
 	this->sceneList[0]->set_asset1(bunny_bytes.str());
-	this->sceneList[0]->set_asset2(lucy_bytes.str());
+	this->sceneList[0]->set_asset2(tea_bytes.str());
 
 
 	//Scene 2
