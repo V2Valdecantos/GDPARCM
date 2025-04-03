@@ -148,6 +148,62 @@ namespace GDEngine {
                                 
 
                         }
+                        if (ImGui::MenuItem("Scene 2"))
+                        {
+                            if (!StreamingManager::getInstance()->sceneFlags[1])
+                            {
+                                StreamingManager::getInstance()->startStreamingScene(1);
+                            }
+                            else
+                            {
+                                StreamingManager::getInstance()->sceneFlags[1] = false;
+                                StreamingManager::getInstance()->RemoveScene(1);
+                            }
+
+
+                        }
+                        if (ImGui::MenuItem("Scene 3"))
+                        {
+                            if (!StreamingManager::getInstance()->sceneFlags[2])
+                            {
+                                StreamingManager::getInstance()->startStreamingScene(2);
+                            }
+                            else
+                            {
+                                StreamingManager::getInstance()->sceneFlags[2] = false;
+                                StreamingManager::getInstance()->RemoveScene(2);
+                            }
+
+
+                        }
+                        if (ImGui::MenuItem("Scene 4"))
+                        {
+                            if (!StreamingManager::getInstance()->sceneFlags[3])
+                            {
+                                StreamingManager::getInstance()->startStreamingScene(3);
+                            }
+                            else
+                            {
+                                StreamingManager::getInstance()->sceneFlags[3] = false;
+                                StreamingManager::getInstance()->RemoveScene(3);
+                            }
+
+
+                        }
+                        if (ImGui::MenuItem("Scene 5"))
+                        {
+                            if (!StreamingManager::getInstance()->sceneFlags[4])
+                            {
+                                StreamingManager::getInstance()->startStreamingScene(4);
+                            }
+                            else
+                            {
+                                StreamingManager::getInstance()->sceneFlags[4] = false;
+                                StreamingManager::getInstance()->RemoveScene(4);
+                            }
+
+
+                        }
                         ImGui::EndMenu();
                     }
                     ImGui::EndMenu();  // Close 3D Object menu

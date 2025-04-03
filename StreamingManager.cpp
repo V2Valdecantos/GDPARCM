@@ -50,10 +50,15 @@ namespace GDEngine {
 
 		if (status.ok()) 
 		{
-			this->createMeshObjectFromStream(a1.str(), index, 1);
-			Logger::log(this, "Streamed Asset");
-			this->createMeshObjectFromStream(a2.str(), index, 2);
-			Logger::log(this, "Streamed Asset");
+			if (a1.str().length() > 1) 
+			{
+				this->createMeshObjectFromStream(a1.str(), index, 1);
+				Logger::log(this, "Streamed Asset");
+			}
+			if (a2.str().length() > 1) {
+				this->createMeshObjectFromStream(a2.str(), index, 2);
+				Logger::log(this, "Streamed Asset");
+			}
 
 
 			Logger::log(this, "Done Streaming");

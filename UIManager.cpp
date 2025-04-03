@@ -10,6 +10,7 @@
 #include "RenderSystem.h"
 #include "DeviceContext.h"
 #include "ViewportManager.h"
+#include "StreamingManager.h"
 
 #include "HierarchyScreen.h"
 #include "imgui_internal.h"
@@ -91,7 +92,7 @@ namespace GDEngine {
 		AlignForWidth(width);
 
 		EngineBackend* backend = EngineBackend::getInstance();
-		if (ImGui::Button("Play"))
+		/*if (ImGui::Button("Play"))
 		{
 			if (backend->getMode() == EngineBackend::EDITOR)
 			{
@@ -123,6 +124,104 @@ namespace GDEngine {
 			{
 				backend->startFrameStep();
 			}
+		}*/
+		if (ImGui::Button("Scene 1"))
+		{
+			if (!StreamingManager::getInstance()->sceneFlags[0])
+			{
+				StreamingManager::getInstance()->startStreamingScene(0);
+			}
+			else
+			{
+				StreamingManager::getInstance()->sceneFlags[0] = false;
+				StreamingManager::getInstance()->RemoveScene(0);
+			}
+
+
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("Scene 2"))
+		{
+			if (!StreamingManager::getInstance()->sceneFlags[1])
+			{
+				StreamingManager::getInstance()->startStreamingScene(1);
+			}
+			else
+			{
+				StreamingManager::getInstance()->sceneFlags[1] = false;
+				StreamingManager::getInstance()->RemoveScene(1);
+			}
+
+
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("Scene 3"))
+		{
+			if (!StreamingManager::getInstance()->sceneFlags[2])
+			{
+				StreamingManager::getInstance()->startStreamingScene(2);
+			}
+			else
+			{
+				StreamingManager::getInstance()->sceneFlags[2] = false;
+				StreamingManager::getInstance()->RemoveScene(2);
+			}
+
+
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("Scene 4"))
+		{
+			if (!StreamingManager::getInstance()->sceneFlags[3])
+			{
+				StreamingManager::getInstance()->startStreamingScene(3);
+			}
+			else
+			{
+				StreamingManager::getInstance()->sceneFlags[3] = false;
+				StreamingManager::getInstance()->RemoveScene(3);
+			}
+
+
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("Scene 5"))
+		{
+			if (!StreamingManager::getInstance()->sceneFlags[4])
+			{
+				StreamingManager::getInstance()->startStreamingScene(4);
+			}
+			else
+			{
+				StreamingManager::getInstance()->sceneFlags[4] = false;
+				StreamingManager::getInstance()->RemoveScene(4);
+			}
+
+
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("All Scenes"))
+		{
+			bool allStreams = true;
+			for (int i = 0; i < 5; i++) {
+				if (!StreamingManager::getInstance()->sceneFlags[i])
+				{
+					StreamingManager::getInstance()->startStreamingScene(i);
+					allStreams = false;
+				}
+			}
+
+			if (allStreams) 
+			{
+				for (int i = 0; i < 5; i++) 
+				{
+					StreamingManager::getInstance()->sceneFlags[i] = false;
+					StreamingManager::getInstance()->RemoveScene(i);
+				}
+			}
+			
+
+
 		}
 		ImGui::PopStyleVar();
 

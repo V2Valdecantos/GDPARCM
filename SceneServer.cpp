@@ -23,7 +23,8 @@ using namespace GDEngine;
 
 grpc::Status SceneStreamerServer::RequestScene(grpc::ServerContext* context, const SceneIndex* request, grpc::ServerWriter<Scene>* writer)
 {
-	std::cout << "[SERVER]: Sending Scene." << std::endl;
+	std::cout << "[SERVER]: Sending Scene " + std::to_string(request->sceneid()) << std::endl;
+	std::this_thread::sleep_for(std::chrono::seconds(3)); //simulate network latency
 	Scene response;
 	response.set_asset1(this->sceneList[request->sceneid()]->asset1());
 	response.set_asset2(this->sceneList[request->sceneid()]->asset2());
@@ -61,6 +62,10 @@ void SceneStreamerServer::initializeScenes()
 
 
 	//Scene 2
+	std::stringstream arma_bytes = this->loadBytesFromFile(L"assets/meshes/armadillo.obj");
+	std::stringstream arma_bytes2 = this->loadBytesFromFile(L"assets/meshes/armadillo.obj");
+	this->sceneList[1]->set_asset1(arma_bytes.str());
+	this->sceneList[1]->set_asset2(arma_bytes2.str());
 }
 
 void SceneStreamerServer::run()
