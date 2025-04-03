@@ -61,7 +61,7 @@ namespace GDEngine {
 		std::string modelLoc = "assets/streamed/";
 		std::string fileName = "scene_" + std::to_string(sceneID) + "_object_" + std::to_string(index);
 		std::string path = modelLoc + fileName + ".obj";
-		std::ofstream file(fileName, std::ios::binary);
+		std::ofstream file(path, std::ios::binary);
 
 		file << bytes;
 

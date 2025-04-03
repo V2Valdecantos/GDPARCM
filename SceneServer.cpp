@@ -23,6 +23,7 @@ using namespace GDEngine;
 
 grpc::Status SceneStreamerServer::RequestScene(grpc::ServerContext* context, const SceneIndex* request, grpc::ServerWriter<Scene>* writer)
 {
+	std::cout << "[SERVER]: Sending Scene." << std::endl;
 	Scene response;
 	response.set_asset1(this->sceneList[request->sceneid()]->asset1());
 	response.set_asset2(this->sceneList[request->sceneid()]->asset2());
@@ -54,7 +55,7 @@ void SceneStreamerServer::initializeScenes()
 	
 	//Scene 1
 	std::stringstream bunny_bytes = this->loadBytesFromFile(L"assets/meshes/bunny.obj");
-	std::stringstream lucy_bytes = this->loadBytesFromFile(L"assets/meshes/lucy.obj");
+	std::stringstream lucy_bytes = this->loadBytesFromFile(L"assets/meshes/bunny.obj");
 	this->sceneList[0]->set_asset1(bunny_bytes.str());
 	this->sceneList[0]->set_asset2(lucy_bytes.str());
 
@@ -85,6 +86,9 @@ void SceneStreamerServer::RunServer(uint16_t port)
 	// Register "service" as the instance through which we'll communicate with
 	// clients. In this case it corresponds to an *synchronous* service.
 	builder.RegisterService(&service);
+	builder.SetMaxMessageSize(INT_MAX);
+	builder.SetMaxSendMessageSize(INT_MAX);
+	builder.SetMaxReceiveMessageSize(INT_MAX);
 	// Finally assemble the server.
 	std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
 	std::cout << "Server listening on " << serverAddress << std::endl;
