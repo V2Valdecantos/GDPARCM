@@ -39,12 +39,15 @@ namespace GDEngine {
 		// Here we can use the stub's newly available method we just added.
 		std::unique_ptr<grpc::ClientReader<Scene>> reader(this->stub_->RequestScene(&context, request));
 		this->sceneFlags[index] = true;
-
 		std::stringstream a1, a2, a3, a4, a5;
+
 		while (reader->Read(&response))
 		{
 			a1 << response.asset1();
 			a2 << response.asset2();
+			a3 << response.asset3();
+			a4 << response.asset4();
+			a5 << response.asset5();
 		}
 		grpc::Status status = reader->Finish();
 
@@ -59,7 +62,20 @@ namespace GDEngine {
 				this->createMeshObjectFromStream(a2.str(), index, 2);
 				Logger::log(this, "Streamed Asset");
 			}
-
+			if (a3.str().length() > 1)
+			{
+				this->createMeshObjectFromStream(a3.str(), index, 3);
+				Logger::log(this, "Streamed Asset");
+			}
+			if (a4.str().length() > 1) {
+				this->createMeshObjectFromStream(a4.str(), index, 4);
+				Logger::log(this, "Streamed Asset");
+			}
+			if (a5.str().length() > 1)
+			{
+				this->createMeshObjectFromStream(a5.str(), index, 5);
+				Logger::log(this, "Streamed Asset");
+			}
 
 			Logger::log(this, "Done Streaming");
 		}
@@ -95,6 +111,7 @@ namespace GDEngine {
 		std::ofstream file(path, std::ios::binary);
 
 		file << bytes;
+		
 
 		//filepath
 		std::wstring widestr = std::wstring(path.begin(), path.end());
@@ -105,7 +122,7 @@ namespace GDEngine {
 
 		MeshObject* obj = new MeshObject(fileName, charPath);
 		obj->setPosition(0, 0, 0);
-		obj->setScale(4, 4, 4);
+		obj->setScale(1, 1, 1);
 
 		GameObjectManager::getInstance()->addObject(obj);
 		guard.unlock();
@@ -115,6 +132,7 @@ namespace GDEngine {
 
 	StreamingManager::StreamingManager(std::shared_ptr<grpc::ChannelInterface> channel)
 	{
+
 		this->stub_ = SceneStreamer::NewStub(channel);
 	}
 

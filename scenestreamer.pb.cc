@@ -58,6 +58,15 @@ inline constexpr Scene::Impl_::Impl_(
         asset2_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
+        asset3_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        asset4_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        asset5_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
         _cached_size_{0} {}
 
 template <typename>
@@ -105,6 +114,9 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::Scene, _impl_.asset1_),
         PROTOBUF_FIELD_OFFSET(::Scene, _impl_.asset2_),
+        PROTOBUF_FIELD_OFFSET(::Scene, _impl_.asset3_),
+        PROTOBUF_FIELD_OFFSET(::Scene, _impl_.asset4_),
+        PROTOBUF_FIELD_OFFSET(::Scene, _impl_.asset5_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -119,15 +131,17 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_scenestreamer_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\023scenestreamer.proto\"\035\n\nSceneIndex\022\017\n\007s"
-    "ceneid\030\001 \001(\005\"\'\n\005Scene\022\016\n\006asset1\030\001 \001(\014\022\016\n"
-    "\006asset2\030\002 \001(\01428\n\rSceneStreamer\022\'\n\014Reques"
-    "tScene\022\013.SceneIndex\032\006.Scene\"\0000\001b\006proto3"
+    "ceneid\030\001 \001(\005\"W\n\005Scene\022\016\n\006asset1\030\001 \001(\014\022\016\n"
+    "\006asset2\030\002 \001(\014\022\016\n\006asset3\030\003 \001(\014\022\016\n\006asset4\030"
+    "\004 \001(\014\022\016\n\006asset5\030\005 \001(\01428\n\rSceneStreamer\022\'"
+    "\n\014RequestScene\022\013.SceneIndex\032\006.Scene\"\0000\001b"
+    "\006proto3"
 };
 static ::absl::once_flag descriptor_table_scenestreamer_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_scenestreamer_2eproto = {
     false,
     false,
-    159,
+    207,
     descriptor_table_protodef_scenestreamer_2eproto,
     "scenestreamer.proto",
     &descriptor_table_scenestreamer_2eproto_once,
@@ -367,6 +381,9 @@ inline PROTOBUF_NDEBUG_INLINE Scene::Impl_::Impl_(
     const Impl_& from, const ::Scene& from_msg)
       : asset1_(arena, from.asset1_),
         asset2_(arena, from.asset2_),
+        asset3_(arena, from.asset3_),
+        asset4_(arena, from.asset4_),
+        asset5_(arena, from.asset5_),
         _cached_size_{0} {}
 
 Scene::Scene(
@@ -390,6 +407,9 @@ inline PROTOBUF_NDEBUG_INLINE Scene::Impl_::Impl_(
     ::google::protobuf::Arena* arena)
       : asset1_(arena),
         asset2_(arena),
+        asset3_(arena),
+        asset4_(arena),
+        asset5_(arena),
         _cached_size_{0} {}
 
 inline void Scene::SharedCtor(::_pb::Arena* arena) {
@@ -405,6 +425,9 @@ inline void Scene::SharedDtor(MessageLite& self) {
   ABSL_DCHECK(this_.GetArena() == nullptr);
   this_._impl_.asset1_.Destroy();
   this_._impl_.asset2_.Destroy();
+  this_._impl_.asset3_.Destroy();
+  this_._impl_.asset4_.Destroy();
+  this_._impl_.asset5_.Destroy();
   this_._impl_.~Impl_();
 }
 
@@ -444,15 +467,15 @@ const ::google::protobuf::internal::ClassData* Scene::GetClassData() const {
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 0, 2> Scene::_table_ = {
+const ::_pbi::TcParseTable<3, 5, 0, 0, 2> Scene::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    5, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967264,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    5,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -462,12 +485,24 @@ const ::_pbi::TcParseTable<1, 2, 0, 0, 2> Scene::_table_ = {
     ::_pbi::TcParser::GetTable<::Scene>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // bytes asset2 = 2;
-    {::_pbi::TcParser::FastBS1,
-     {18, 63, 0, PROTOBUF_FIELD_OFFSET(Scene, _impl_.asset2_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // bytes asset1 = 1;
     {::_pbi::TcParser::FastBS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(Scene, _impl_.asset1_)}},
+    // bytes asset2 = 2;
+    {::_pbi::TcParser::FastBS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(Scene, _impl_.asset2_)}},
+    // bytes asset3 = 3;
+    {::_pbi::TcParser::FastBS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(Scene, _impl_.asset3_)}},
+    // bytes asset4 = 4;
+    {::_pbi::TcParser::FastBS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(Scene, _impl_.asset4_)}},
+    // bytes asset5 = 5;
+    {::_pbi::TcParser::FastBS1,
+     {42, 63, 0, PROTOBUF_FIELD_OFFSET(Scene, _impl_.asset5_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -476,6 +511,15 @@ const ::_pbi::TcParseTable<1, 2, 0, 0, 2> Scene::_table_ = {
     (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
     // bytes asset2 = 2;
     {PROTOBUF_FIELD_OFFSET(Scene, _impl_.asset2_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // bytes asset3 = 3;
+    {PROTOBUF_FIELD_OFFSET(Scene, _impl_.asset3_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // bytes asset4 = 4;
+    {PROTOBUF_FIELD_OFFSET(Scene, _impl_.asset4_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
+    // bytes asset5 = 5;
+    {PROTOBUF_FIELD_OFFSET(Scene, _impl_.asset5_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBytes | ::_fl::kRepAString)},
   }},
   // no aux_entries
@@ -492,6 +536,9 @@ PROTOBUF_NOINLINE void Scene::Clear() {
 
   _impl_.asset1_.ClearToEmpty();
   _impl_.asset2_.ClearToEmpty();
+  _impl_.asset3_.ClearToEmpty();
+  _impl_.asset4_.ClearToEmpty();
+  _impl_.asset5_.ClearToEmpty();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -520,6 +567,24 @@ PROTOBUF_NOINLINE void Scene::Clear() {
           if (!this_._internal_asset2().empty()) {
             const std::string& _s = this_._internal_asset2();
             target = stream->WriteBytesMaybeAliased(2, _s, target);
+          }
+
+          // bytes asset3 = 3;
+          if (!this_._internal_asset3().empty()) {
+            const std::string& _s = this_._internal_asset3();
+            target = stream->WriteBytesMaybeAliased(3, _s, target);
+          }
+
+          // bytes asset4 = 4;
+          if (!this_._internal_asset4().empty()) {
+            const std::string& _s = this_._internal_asset4();
+            target = stream->WriteBytesMaybeAliased(4, _s, target);
+          }
+
+          // bytes asset5 = 5;
+          if (!this_._internal_asset5().empty()) {
+            const std::string& _s = this_._internal_asset5();
+            target = stream->WriteBytesMaybeAliased(5, _s, target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -557,6 +622,21 @@ PROTOBUF_NOINLINE void Scene::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
                                               this_._internal_asset2());
             }
+            // bytes asset3 = 3;
+            if (!this_._internal_asset3().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                              this_._internal_asset3());
+            }
+            // bytes asset4 = 4;
+            if (!this_._internal_asset4().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                              this_._internal_asset4());
+            }
+            // bytes asset5 = 5;
+            if (!this_._internal_asset5().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::BytesSize(
+                                              this_._internal_asset5());
+            }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
@@ -576,6 +656,15 @@ void Scene::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::p
   if (!from._internal_asset2().empty()) {
     _this->_internal_set_asset2(from._internal_asset2());
   }
+  if (!from._internal_asset3().empty()) {
+    _this->_internal_set_asset3(from._internal_asset3());
+  }
+  if (!from._internal_asset4().empty()) {
+    _this->_internal_set_asset4(from._internal_asset4());
+  }
+  if (!from._internal_asset5().empty()) {
+    _this->_internal_set_asset5(from._internal_asset5());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -594,6 +683,9 @@ void Scene::InternalSwap(Scene* PROTOBUF_RESTRICT other) {
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.asset1_, &other->_impl_.asset1_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.asset2_, &other->_impl_.asset2_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.asset3_, &other->_impl_.asset3_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.asset4_, &other->_impl_.asset4_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.asset5_, &other->_impl_.asset5_, arena);
 }
 
 ::google::protobuf::Metadata Scene::GetMetadata() const {

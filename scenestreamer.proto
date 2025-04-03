@@ -14,5 +14,8 @@ message SceneIndex {
 // The response message containing the list of assets/models
 message Scene {
 	bytes asset1 = 1;
-	bytes asset2 = 2;// List of all assets/models in the scene
+	bytes asset2 = 2;
+	bytes asset3 = 3;
+	bytes asset4 = 4;
+	bytes asset5 = 5; // List of all assets/models in the scene
 }

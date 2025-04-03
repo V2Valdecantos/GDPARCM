@@ -76,7 +76,7 @@ void Camera::updateProjectionMatrix()
 				fov, // fov
 				(float)width / (float)height, // aspect
 				0.1f, // near
-				100.0f // far
+				1000.0f // far
 			);
 			break;
 
@@ -99,7 +99,7 @@ void Camera::updateProjectionMatrix()
 				fov, // fov
 				(float)width / (float)height, // aspect
 				0.1f, // near
-				100.0f // far
+				1000.0f // far
 			);
 			break;
 	}

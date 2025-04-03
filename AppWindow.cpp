@@ -204,7 +204,12 @@ void AppWindow::initializeEngine()
 		BaseComponentSystem::initialize();
 		CameraManager::initialize();
 		UIManager::initialize(m_windowHandle);
-		StreamingManager::initialize(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
+
+
+		grpc::ChannelArguments channelArgs;
+		channelArgs.SetMaxReceiveMessageSize(INT_MAX);
+		channelArgs.SetMaxSendMessageSize(INT_MAX);
+		StreamingManager::initialize(grpc::CreateCustomChannel("localhost:50051", grpc::InsecureChannelCredentials(), channelArgs));
 		
 	}
 	catch (...)

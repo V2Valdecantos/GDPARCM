@@ -63,8 +63,11 @@ namespace GDEngine {
 					tinyobj::real_t ty = 0;
 					if (!attribs.texcoords.empty())
 					{
-						tx = attribs.texcoords[index.texcoord_index * 2 + 0];
-						ty = attribs.texcoords[index.texcoord_index * 2 + 1];
+						if (index.texcoord_index >= 0) 
+						{
+							tx = attribs.texcoords[index.texcoord_index * 2 + 0];
+							ty = attribs.texcoords[index.texcoord_index * 2 + 1];
+						}
 					}
 
 					VertexMesh vertex(Vector3D(vx, vy, vz), Vector2D(tx, ty));

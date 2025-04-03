@@ -24,6 +24,8 @@
 #include "CreditsScreen.h"
 #include "EngineBackend.h"
 
+#include "ProgressBar.h"
+
 namespace GDEngine {
 
 	UIManager* UIManager::P_SHARED_INSTANCE = NULL;

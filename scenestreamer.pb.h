@@ -406,6 +406,9 @@ class Scene final : public ::google::protobuf::Message
   enum : int {
     kAsset1FieldNumber = 1,
     kAsset2FieldNumber = 2,
+    kAsset3FieldNumber = 3,
+    kAsset4FieldNumber = 4,
+    kAsset5FieldNumber = 5,
   };
   // bytes asset1 = 1;
   void clear_asset1() ;
@@ -439,12 +442,60 @@ class Scene final : public ::google::protobuf::Message
   std::string* _internal_mutable_asset2();
 
   public:
+  // bytes asset3 = 3;
+  void clear_asset3() ;
+  const std::string& asset3() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_asset3(Arg_&& arg, Args_... args);
+  std::string* mutable_asset3();
+  PROTOBUF_NODISCARD std::string* release_asset3();
+  void set_allocated_asset3(std::string* value);
+
+  private:
+  const std::string& _internal_asset3() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_asset3(
+      const std::string& value);
+  std::string* _internal_mutable_asset3();
+
+  public:
+  // bytes asset4 = 4;
+  void clear_asset4() ;
+  const std::string& asset4() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_asset4(Arg_&& arg, Args_... args);
+  std::string* mutable_asset4();
+  PROTOBUF_NODISCARD std::string* release_asset4();
+  void set_allocated_asset4(std::string* value);
+
+  private:
+  const std::string& _internal_asset4() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_asset4(
+      const std::string& value);
+  std::string* _internal_mutable_asset4();
+
+  public:
+  // bytes asset5 = 5;
+  void clear_asset5() ;
+  const std::string& asset5() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_asset5(Arg_&& arg, Args_... args);
+  std::string* mutable_asset5();
+  PROTOBUF_NODISCARD std::string* release_asset5();
+  void set_allocated_asset5(std::string* value);
+
+  private:
+  const std::string& _internal_asset5() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_asset5(
+      const std::string& value);
+  std::string* _internal_mutable_asset5();
+
+  public:
   // @@protoc_insertion_point(class_scope:Scene)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      1, 2, 0,
+      3, 5, 0,
       0, 2>
       _table_;
 
@@ -464,6 +515,9 @@ class Scene final : public ::google::protobuf::Message
                           const Scene& from_msg);
     ::google::protobuf::internal::ArenaStringPtr asset1_;
     ::google::protobuf::internal::ArenaStringPtr asset2_;
+    ::google::protobuf::internal::ArenaStringPtr asset3_;
+    ::google::protobuf::internal::ArenaStringPtr asset4_;
+    ::google::protobuf::internal::ArenaStringPtr asset5_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -607,6 +661,150 @@ inline void Scene::set_allocated_asset2(std::string* value) {
     _impl_.asset2_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:Scene.asset2)
+}
+
+// bytes asset3 = 3;
+inline void Scene::clear_asset3() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.asset3_.ClearToEmpty();
+}
+inline const std::string& Scene::asset3() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:Scene.asset3)
+  return _internal_asset3();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Scene::set_asset3(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.asset3_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:Scene.asset3)
+}
+inline std::string* Scene::mutable_asset3() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_asset3();
+  // @@protoc_insertion_point(field_mutable:Scene.asset3)
+  return _s;
+}
+inline const std::string& Scene::_internal_asset3() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.asset3_.Get();
+}
+inline void Scene::_internal_set_asset3(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.asset3_.Set(value, GetArena());
+}
+inline std::string* Scene::_internal_mutable_asset3() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.asset3_.Mutable( GetArena());
+}
+inline std::string* Scene::release_asset3() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:Scene.asset3)
+  return _impl_.asset3_.Release();
+}
+inline void Scene::set_allocated_asset3(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.asset3_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.asset3_.IsDefault()) {
+    _impl_.asset3_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:Scene.asset3)
+}
+
+// bytes asset4 = 4;
+inline void Scene::clear_asset4() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.asset4_.ClearToEmpty();
+}
+inline const std::string& Scene::asset4() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:Scene.asset4)
+  return _internal_asset4();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Scene::set_asset4(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.asset4_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:Scene.asset4)
+}
+inline std::string* Scene::mutable_asset4() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_asset4();
+  // @@protoc_insertion_point(field_mutable:Scene.asset4)
+  return _s;
+}
+inline const std::string& Scene::_internal_asset4() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.asset4_.Get();
+}
+inline void Scene::_internal_set_asset4(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.asset4_.Set(value, GetArena());
+}
+inline std::string* Scene::_internal_mutable_asset4() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.asset4_.Mutable( GetArena());
+}
+inline std::string* Scene::release_asset4() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:Scene.asset4)
+  return _impl_.asset4_.Release();
+}
+inline void Scene::set_allocated_asset4(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.asset4_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.asset4_.IsDefault()) {
+    _impl_.asset4_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:Scene.asset4)
+}
+
+// bytes asset5 = 5;
+inline void Scene::clear_asset5() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.asset5_.ClearToEmpty();
+}
+inline const std::string& Scene::asset5() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:Scene.asset5)
+  return _internal_asset5();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Scene::set_asset5(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.asset5_.SetBytes(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:Scene.asset5)
+}
+inline std::string* Scene::mutable_asset5() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_asset5();
+  // @@protoc_insertion_point(field_mutable:Scene.asset5)
+  return _s;
+}
+inline const std::string& Scene::_internal_asset5() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.asset5_.Get();
+}
+inline void Scene::_internal_set_asset5(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.asset5_.Set(value, GetArena());
+}
+inline std::string* Scene::_internal_mutable_asset5() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.asset5_.Mutable( GetArena());
+}
+inline std::string* Scene::release_asset5() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:Scene.asset5)
+  return _impl_.asset5_.Release();
+}
+inline void Scene::set_allocated_asset5(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.asset5_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.asset5_.IsDefault()) {
+    _impl_.asset5_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:Scene.asset5)
 }
 
 #ifdef __GNUC__
