@@ -20,6 +20,7 @@ namespace GDEngine
 
 	Random::Random() : m_numberGenerator(std::random_device{}())
 	{
+		CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 		m_numberGenerator.seed(time(nullptr));
 		Logger::log(P_SHARED_INSTANCE, "Initialized");
 	}

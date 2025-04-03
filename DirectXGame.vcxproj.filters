@@ -724,6 +724,9 @@
     <ClInclude Include="scenestreamer.pb.h">
       <Filter>Server\Proto</Filter>
     </ClInclude>
+    <ClInclude Include="ProgressBar.h">
+      <Filter>Editor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="BasePixelShader.hlsl">

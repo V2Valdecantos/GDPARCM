@@ -18,10 +18,16 @@ namespace GDEngine {
 
 		void RequestScene(int index);
 		void RemoveScene(int index);
-		bool sceneFlags[4] = { false, false, false, false };
+		bool sceneFlags[5] = { false, false, false, false, false};
+		float sceneProgress[5] = { 0,0,0,0,0 };
+		float allScenesProgress = 0.0f;
+		float getProgress(int index);
+		float getAllProgress();
 
 	private:
 		bool createMeshObjectFromStream(std::string bytes, int sceneID, int index);
+		void incrementProgress(int index);
+		void resetProgress(int index);
 
 	private:
 		static StreamingManager* P_SHARED_INSTANCE;
@@ -39,6 +45,7 @@ namespace GDEngine {
 	private:
 		std::unique_ptr<SceneStreamer::Stub> stub_;
 		std::mutex guard;
+		std::mutex progressGuard;
 		std::unordered_map<int, std::vector<std::string>> scenePaths;
 		std::unordered_map<int, std::vector<std::string>> sceneNames;
 	};

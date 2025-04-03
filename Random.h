@@ -1,6 +1,7 @@
 #pragma once
 
 #include <random>
+#include <mutex>
 
 namespace GDEngine
 {

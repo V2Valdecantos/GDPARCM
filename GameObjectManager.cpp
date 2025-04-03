@@ -132,11 +132,13 @@ void GameObjectManager::update(float deltaTime)
 
 void GameObjectManager::draw(int width, int height)
 {
+	this->guard.lock();
 	for (AGameObject* gameObject : this->m_gameObjectList)
 	{
 		if (gameObject->isActive() && this->isViewable(gameObject))
 			gameObject->draw(width, height);
 	}
+	this->guard.unlock();
 }
 
 GameObjectManager::GameObjectList GameObjectManager::getAllObjects()

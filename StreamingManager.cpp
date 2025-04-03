@@ -8,6 +8,7 @@
 #include <fstream>
 
 #include "Logger.h"
+#include "Random.h"
 
 #include <grpcpp/create_channel.h>
 
@@ -82,11 +83,13 @@ namespace GDEngine {
 		else 
 		{
 			Logger::log(this, "Stream Failed");
+			this->sceneFlags[index] = false;
 		}
 	}
 
 	void StreamingManager::RemoveScene(int index)
 	{
+		this->resetProgress(index);
 		guard.lock();
 		for (std::string path : this->scenePaths[index])
 		{
@@ -99,6 +102,7 @@ namespace GDEngine {
 		this->scenePaths[index].clear();
 		this->sceneNames[index].clear();
 		guard.unlock();
+
 	}
 
 	bool StreamingManager::createMeshObjectFromStream(std::string bytes, int sceneID, int index)
@@ -121,12 +125,53 @@ namespace GDEngine {
 		this->sceneNames[sceneID].push_back(fileName);
 
 		MeshObject* obj = new MeshObject(fileName, charPath);
-		obj->setPosition(0, 0, 0);
+
+		//randomize transforms
+		float posx = Random::range(-1000, 1000);
+		float posy = Random::range(-1000, 1000);
+		float posz = Random::range(-1000, 1000);
+
+		float rotx = Random::range(-90, 90);
+		float roty = Random::range(-90, 90);
+		float rotz = Random::range(-90, 90);
+
+		obj->setRotation(rotx, roty, rotz);
+		obj->setPosition(posx, posy, posz);
 		obj->setScale(1, 1, 1);
 
 		GameObjectManager::getInstance()->addObject(obj);
 		guard.unlock();
+
+		this->incrementProgress(sceneID);
 		return true;
+	}
+
+	void StreamingManager::incrementProgress(int index)
+	{
+		progressGuard.lock();
+		this->sceneProgress[index] += 0.2f;
+		this->allScenesProgress += 1.0f / 25.0f;
+		progressGuard.unlock();
+	}
+
+	void StreamingManager::resetProgress(int index)
+	{
+		progressGuard.lock();
+		this->sceneProgress[index] = 0;
+		this->allScenesProgress -= (1.0f / 25.0f) * 5;
+		progressGuard.unlock();
+	}
+
+	float StreamingManager::getProgress(int index)
+	{
+
+		return this->sceneProgress[index];
+
+	}
+
+	float StreamingManager::getAllProgress()
+	{
+		return this->allScenesProgress;
 	}
 
 

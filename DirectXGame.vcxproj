@@ -276,6 +276,7 @@
     </ClInclude>
     <ClInclude Include="PhysicsSystem.h" />
     <ClInclude Include="PlaybackScreen.h" />
+    <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SceneReader.h" />
     <ClInclude Include="SceneServer.h" />

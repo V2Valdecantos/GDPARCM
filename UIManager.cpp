@@ -85,13 +85,12 @@ namespace GDEngine {
 		ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 0.0f);
 
 		ImGuiStyle& style = ImGui::GetStyle();
-		float width = 0.0f;
-		width += ImGui::CalcTextSize("Play").x;
-		width += style.ItemSpacing.x;
-		width += ImGui::CalcTextSize("Pause").x;
-		width += style.ItemSpacing.x;
-		width += ImGui::CalcTextSize("Step").x;
+		float width = 1920.0f;
 		AlignForWidth(width);
+
+
+		const ImU32 col = ImGui::GetColorU32(ImGuiCol_ButtonHovered);
+		const ImU32 bg = ImGui::GetColorU32(ImGuiCol_Button);
 
 		EngineBackend* backend = EngineBackend::getInstance();
 		/*if (ImGui::Button("Play"))
@@ -135,12 +134,18 @@ namespace GDEngine {
 			}
 			else
 			{
-				StreamingManager::getInstance()->sceneFlags[0] = false;
-				StreamingManager::getInstance()->RemoveScene(0);
+				if (StreamingManager::getInstance()->getProgress(0) == 1.0f)
+				{
+					StreamingManager::getInstance()->sceneFlags[0] = false;
+					StreamingManager::getInstance()->RemoveScene(0);
+				}
 			}
 
-
+			
 		}
+		ImGui::SameLine();
+		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getProgress(0), ImVec2(100, 6), bg, col);
+
 		ImGui::SameLine();
 		if (ImGui::Button("Scene 2"))
 		{
@@ -150,12 +155,18 @@ namespace GDEngine {
 			}
 			else
 			{
-				StreamingManager::getInstance()->sceneFlags[1] = false;
-				StreamingManager::getInstance()->RemoveScene(1);
+				if (StreamingManager::getInstance()->getProgress(1) == 1.0f)
+				{
+					StreamingManager::getInstance()->sceneFlags[1] = false;
+					StreamingManager::getInstance()->RemoveScene(1);
+				}
 			}
 
 
 		}
+		ImGui::SameLine();
+		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getProgress(1), ImVec2(100, 6), bg, col);
+
 		ImGui::SameLine();
 		if (ImGui::Button("Scene 3"))
 		{
@@ -165,12 +176,18 @@ namespace GDEngine {
 			}
 			else
 			{
-				StreamingManager::getInstance()->sceneFlags[2] = false;
-				StreamingManager::getInstance()->RemoveScene(2);
+				if (StreamingManager::getInstance()->getProgress(2) == 1.0f)
+				{
+					StreamingManager::getInstance()->sceneFlags[2] = false;
+					StreamingManager::getInstance()->RemoveScene(2);
+				}
 			}
 
 
 		}
+		ImGui::SameLine();
+		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getProgress(2), ImVec2(100, 6), bg, col);
+
 		ImGui::SameLine();
 		if (ImGui::Button("Scene 4"))
 		{
@@ -180,12 +197,18 @@ namespace GDEngine {
 			}
 			else
 			{
-				StreamingManager::getInstance()->sceneFlags[3] = false;
-				StreamingManager::getInstance()->RemoveScene(3);
+				if (StreamingManager::getInstance()->getProgress(3) == 1.0f)
+				{
+					StreamingManager::getInstance()->sceneFlags[3] = false;
+					StreamingManager::getInstance()->RemoveScene(3);
+				}
 			}
 
 
 		}
+		ImGui::SameLine();
+		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getProgress(3), ImVec2(100, 6), bg, col);
+
 		ImGui::SameLine();
 		if (ImGui::Button("Scene 5"))
 		{
@@ -195,12 +218,18 @@ namespace GDEngine {
 			}
 			else
 			{
-				StreamingManager::getInstance()->sceneFlags[4] = false;
-				StreamingManager::getInstance()->RemoveScene(4);
+				if (StreamingManager::getInstance()->getProgress(4) == 1.0f)
+				{
+					StreamingManager::getInstance()->sceneFlags[4] = false;
+					StreamingManager::getInstance()->RemoveScene(4);
+				}
 			}
 
 
 		}
+		ImGui::SameLine();
+		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getProgress(4), ImVec2(100, 6), bg, col);
+
 		ImGui::SameLine();
 		if (ImGui::Button("All Scenes"))
 		{
@@ -215,16 +244,22 @@ namespace GDEngine {
 
 			if (allStreams) 
 			{
-				for (int i = 0; i < 5; i++) 
+				if (StreamingManager::getInstance()->getAllProgress() >= 1.0f)
 				{
-					StreamingManager::getInstance()->sceneFlags[i] = false;
-					StreamingManager::getInstance()->RemoveScene(i);
+					for (int i = 0; i < 5; i++)
+					{
+						StreamingManager::getInstance()->sceneFlags[i] = false;
+						StreamingManager::getInstance()->RemoveScene(i);
+					}
 				}
 			}
 			
 
 
 		}
+		ImGui::SameLine();
+		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getAllProgress(), ImVec2(100, 6), bg, col);
+
 		ImGui::PopStyleVar();
 
 		ImGuiID id = ImGui::GetID("Main Window");
