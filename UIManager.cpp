@@ -126,7 +126,13 @@ namespace GDEngine {
 				backend->startFrameStep();
 			}
 		}*/
-		if (ImGui::Button("Scene 1"))
+		Texture* scene1 = GDEngine::GraphicsEngine::getInstance()->getTextureManager()->createTextureFromFile(L"assets/textures/scene1.png");
+		Texture* scene2 = GDEngine::GraphicsEngine::getInstance()->getTextureManager()->createTextureFromFile(L"assets/textures/scene2.png");
+		Texture* scene3 = GDEngine::GraphicsEngine::getInstance()->getTextureManager()->createTextureFromFile(L"assets/textures/scene3.png");
+		Texture* scene4 = GDEngine::GraphicsEngine::getInstance()->getTextureManager()->createTextureFromFile(L"assets/textures/scene4.png");
+		Texture* scene5 = GDEngine::GraphicsEngine::getInstance()->getTextureManager()->createTextureFromFile(L"assets/textures/scene5.png");
+		
+		if (ImGui::ImageButton("Scene 1", (ImTextureID)scene1->m_shaderResourceView, ImVec2(50, 50)))
 		{
 			if (!StreamingManager::getInstance()->sceneFlags[0])
 			{
@@ -144,10 +150,10 @@ namespace GDEngine {
 			
 		}
 		ImGui::SameLine();
-		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getProgress(0), ImVec2(100, 6), bg, col);
+		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getProgress(0), ImVec2(150, 6), bg, col);
 
 		ImGui::SameLine();
-		if (ImGui::Button("Scene 2"))
+		if (ImGui::ImageButton("Scene 2", (ImTextureID)scene2->m_shaderResourceView, ImVec2(50, 50)))
 		{
 			if (!StreamingManager::getInstance()->sceneFlags[1])
 			{
@@ -165,10 +171,10 @@ namespace GDEngine {
 
 		}
 		ImGui::SameLine();
-		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getProgress(1), ImVec2(100, 6), bg, col);
+		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getProgress(1), ImVec2(150, 6), bg, col);
 
 		ImGui::SameLine();
-		if (ImGui::Button("Scene 3"))
+		if (ImGui::ImageButton("Scene 3", (ImTextureID)scene3->m_shaderResourceView, ImVec2(50, 50)))
 		{
 			if (!StreamingManager::getInstance()->sceneFlags[2])
 			{
@@ -186,10 +192,10 @@ namespace GDEngine {
 
 		}
 		ImGui::SameLine();
-		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getProgress(2), ImVec2(100, 6), bg, col);
+		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getProgress(2), ImVec2(150, 6), bg, col);
 
 		ImGui::SameLine();
-		if (ImGui::Button("Scene 4"))
+		if (ImGui::ImageButton("Scene 4", (ImTextureID)scene4->m_shaderResourceView, ImVec2(50, 50)))
 		{
 			if (!StreamingManager::getInstance()->sceneFlags[3])
 			{
@@ -207,10 +213,10 @@ namespace GDEngine {
 
 		}
 		ImGui::SameLine();
-		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getProgress(3), ImVec2(100, 6), bg, col);
+		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getProgress(3), ImVec2(150, 6), bg, col);
 
 		ImGui::SameLine();
-		if (ImGui::Button("Scene 5"))
+		if (ImGui::ImageButton("Scene 5", (ImTextureID)scene5->m_shaderResourceView, ImVec2(50, 50)))
 		{
 			if (!StreamingManager::getInstance()->sceneFlags[4])
 			{
@@ -228,7 +234,7 @@ namespace GDEngine {
 
 		}
 		ImGui::SameLine();
-		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getProgress(4), ImVec2(100, 6), bg, col);
+		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getProgress(4), ImVec2(150, 6), bg, col);
 
 		ImGui::SameLine();
 		if (ImGui::Button("All Scenes"))
@@ -258,7 +264,7 @@ namespace GDEngine {
 
 		}
 		ImGui::SameLine();
-		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getAllProgress(), ImVec2(100, 6), bg, col);
+		ImGui::BufferingBar("##buffer_bar", StreamingManager::getInstance()->getAllProgress(), ImVec2(200, 6), bg, col);
 
 		ImGui::PopStyleVar();
 
