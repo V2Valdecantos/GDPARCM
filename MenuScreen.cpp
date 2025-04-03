@@ -136,10 +136,17 @@ namespace GDEngine {
                     {
                         if (ImGui::MenuItem("Scene 1")) 
                         {
-                            if (!StreamingManager::getInstance()->sceneFlags[0])
+                            if (!StreamingManager::getInstance()->sceneFlags[0]) 
+                            {
                                 StreamingManager::getInstance()->startStreamingScene(0);
+                            }
                             else
+                            {
                                 StreamingManager::getInstance()->sceneFlags[0] = false;
+                                StreamingManager::getInstance()->RemoveScene(0);
+                            }
+                                
+
                         }
                         ImGui::EndMenu();
                     }

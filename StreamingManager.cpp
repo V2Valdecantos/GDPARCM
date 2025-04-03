@@ -4,6 +4,7 @@
 #include "MeshManager.h"
 #include "MeshObject.h"
 
+#include <filesystem>
 #include <fstream>
 
 #include "Logger.h"
@@ -63,6 +64,22 @@ namespace GDEngine {
 		}
 	}
 
+	void StreamingManager::RemoveScene(int index)
+	{
+		guard.lock();
+		for (std::string path : this->scenePaths[index])
+		{
+			std::filesystem::remove(path);
+		}
+		for (std::string name : this->sceneNames[index])
+		{
+			GameObjectManager::getInstance()->deleteObjectByName(name);
+		}
+		this->scenePaths[index].clear();
+		this->sceneNames[index].clear();
+		guard.unlock();
+	}
+
 	bool StreamingManager::createMeshObjectFromStream(std::string bytes, int sceneID, int index)
 	{
 
@@ -77,6 +94,9 @@ namespace GDEngine {
 		//filepath
 		std::wstring widestr = std::wstring(path.begin(), path.end());
 		const wchar_t* charPath = widestr.c_str();
+
+		this->scenePaths[sceneID].push_back(path);
+		this->sceneNames[sceneID].push_back(fileName);
 
 		MeshObject* obj = new MeshObject(fileName, charPath);
 		obj->setPosition(0, 0, 0);

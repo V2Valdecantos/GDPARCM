@@ -2,6 +2,7 @@
 #include "IETThread.h"
 #include <thread>
 #include <mutex>
+#include <unordered_map>
 
 #include "scenestreamer.grpc.pb.h"
 #include "iostream"
@@ -16,7 +17,7 @@ namespace GDEngine {
 		void streamScene(int index);
 
 		void RequestScene(int index);
-
+		void RemoveScene(int index);
 		bool sceneFlags[4] = { false, false, false, false };
 
 	private:
@@ -37,6 +38,9 @@ namespace GDEngine {
 
 	private:
 		std::unique_ptr<SceneStreamer::Stub> stub_;
+		std::mutex guard;
+		std::unordered_map<int, std::vector<std::string>> scenePaths;
+		std::unordered_map<int, std::vector<std::string>> sceneNames;
 	};
 }
 
