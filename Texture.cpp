@@ -9,6 +9,7 @@ using namespace GDEngine;
 
 Texture::Texture(const wchar_t* fullPath) : Resource(fullPath)
 {
+	CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 	DirectX::ScratchImage imageData;
 	HRESULT result = DirectX::LoadFromWICFile(fullPath, DirectX::WIC_FLAGS_NONE, nullptr, imageData);
 

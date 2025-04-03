@@ -30,6 +30,7 @@ namespace GDEngine
 		MeshManager* meshManager = GraphicsEngine::getInstance()->getMeshManager();
 
 		this->m_mesh = meshManager->createMeshFromFile(meshFilePath);
+		this->texture = TextureLibrary::getInstance()->getTexture(TextureName::DEFAULT);
 
 		CBObjectData cbData;
 		cbData.time = 0.0f;

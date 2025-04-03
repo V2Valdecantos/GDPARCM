@@ -87,7 +87,7 @@ namespace GDEngine {
 
 	bool StreamingManager::createMeshObjectFromStream(std::string bytes, int sceneID, int index)
 	{
-
+		guard.lock();
 		//make obj file
 		std::string modelLoc = "assets/streamed/";
 		std::string fileName = "scene_" + std::to_string(sceneID) + "_object_" + std::to_string(index);
@@ -108,6 +108,7 @@ namespace GDEngine {
 		obj->setScale(4, 4, 4);
 
 		GameObjectManager::getInstance()->addObject(obj);
+		guard.unlock();
 		return true;
 	}
 
